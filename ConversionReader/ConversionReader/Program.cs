@@ -9,6 +9,7 @@ namespace ConversionReader
 {
     class Program
     {
+        static Handler handler = new Handler("lc-engine.database.windows.net");
         static void Main(string[] args)
         {
             MainWindow form1 = new MainWindow();
