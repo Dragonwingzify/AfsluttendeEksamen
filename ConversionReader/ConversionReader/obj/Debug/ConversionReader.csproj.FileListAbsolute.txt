@@ -1,7 +1,0 @@
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\bin\Debug\ConversionReader.exe.config
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\bin\Debug\ConversionReader.exe
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\bin\Debug\ConversionReader.pdb
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\obj\Debug\ConversionReader.csprojAssemblyReference.cache
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\obj\Debug\ConversionReader.csproj.CoreCompileInputs.cache
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\obj\Debug\ConversionReader.exe
-C:\Users\Lunk\source\repos\ConversionReader\ConversionReader\obj\Debug\ConversionReader.pdb
