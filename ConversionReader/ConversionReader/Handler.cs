@@ -13,28 +13,33 @@ namespace ConversionReader
     class Handler
     {
         //Fields: SQL Data object which references the ConversionReader table
-        SqlConnection sqlConnection;
+        
         SqlCommand sqlCommand;
-        string connectionstring;
-        string sql;
-    
+       string connectionstring;
+       public string sql;
         string cmdSqlGet;
 
         public Handler(string sqlServer)
         {
-            try
+            using (SqlConnection sqlConnection = new SqlConnection(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12"))  //initialized
             {
-                connectionstring = sqlServer;
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(sql, sqlConnection);
-                sqlCommand.ExecuteNonQuery();
-                sqlCommand.Dispose();
-                Console.WriteLine("Database: " + sqlConnection.Database);
+                try
+                {
+
+                    connectionstring = sqlServer;
+                    sqlCommand = new SqlCommand(sql, sqlConnection);
+                    sqlConnection.Open();
+                    sqlCommand.CommandText = "SELECT * FROM convert_platform";
+                    sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Dispose();
+                    Console.WriteLine("Database: " + sqlConnection.Database);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Couldn't connect to any database! error: " + e);
+                }
             }
-            catch(Exception e)
-            {
-                Console.WriteLine("Couldn't connect to any database! error: " + e);
-            }
+
         }
 
         public string GetLineCode()
