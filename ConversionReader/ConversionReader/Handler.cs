@@ -15,7 +15,7 @@ namespace ConversionReader
         //Fields: SQL Data object which references the ConversionReader table
         
         SqlCommand sqlCommand;
-       string connectionstring;
+       string connectionstring = @"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
        public string sql;
         string cmdSqlGet;
 
@@ -42,13 +42,26 @@ namespace ConversionReader
 
         }
 
-        public string GetLineCode()
+        public string GetLineCode(string listID, string lineCode, string type, bool toThrow)
         {
-            sqlCommand.ExecuteReader();
-
-            return "placeholder";
+            string output = "";
+            using (var conn = new SqlConnection(connectionstring))
+            using (sqlCommand = new SqlCommand("GetLinecode", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            {
+                sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
+                sqlCommand.Parameters.Add(new SqlParameter("@Terminal", lineCode));
+                conn.Open();
+                using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        output = (string)reader["Output"];
+                    }
+                }
+            }
+            return output;
         }
-        public string GetTermCode()
+        public string GetTermCode(string listID, string port, string pier, string type, bool toThrow)
         {
             return "placeholer";
         }
