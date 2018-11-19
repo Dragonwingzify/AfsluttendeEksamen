@@ -67,11 +67,10 @@ namespace ConversionReader
             using (var conn = new SqlConnection(connectionstring))
             using (sqlCommand = new SqlCommand("GetTerminal", conn) { CommandType = System.Data.CommandType.StoredProcedure })
             {
-                sqlCommand.Parameters.Add(new SqlParameter("@list_id", listID));
+                sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
                 sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
                 sqlCommand.Parameters.Add(new SqlParameter("@Pier", pier));
                 conn.Open();
-                sqlCommand.ExecuteNonQuery();
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
                     while (reader.Read())
@@ -79,7 +78,6 @@ namespace ConversionReader
                         output = (string)reader["Output"];
                     }
                 }
-                
             }
             return output;
         }
