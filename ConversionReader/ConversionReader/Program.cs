@@ -11,12 +11,14 @@ namespace ConversionReader
     class Program
     {
 
-        static Handler handler = new Handler("lc-engine.database.windows.net");
+        static Handler handler = new Handler("Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
         
         static void Main(string[] args)
-        { 
-            MainWindow form1 = new MainWindow();
-            Application.Run(form1);
+        {
+            handler.GetLineCode("DEFAULT", "klajsd", "1", false);
+            Console.ReadKey();
+            //MainWindow form1 = new MainWindow();
+            //Application.Run(form1);
             
         }
 

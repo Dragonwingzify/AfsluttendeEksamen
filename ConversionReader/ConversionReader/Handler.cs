@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
+
 enum SQL
 {
     CREATE, UPDATE, PUT, DROP, DELETE
@@ -21,7 +23,7 @@ namespace ConversionReader
 
         public Handler(string sqlServer)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12"))  //initialized
+            using (SqlConnection sqlConnection = new SqlConnection(connectionstring))  //initialized
             {
                 try
                 {
@@ -46,19 +48,23 @@ namespace ConversionReader
         {
             string output = "";
             using (var conn = new SqlConnection(connectionstring))
-            using (sqlCommand = new SqlCommand("GetLinecode", conn) { CommandType = System.Data.CommandType.StoredProcedure })
             {
-                sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
-                sqlCommand.Parameters.Add(new SqlParameter("@Terminal", lineCode));
+                sqlCommand = new SqlCommand("dbo.GetLinecode", conn);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
+                sqlCommand.Parameters["@ListId"].Value = listID;
+                sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
+                sqlCommand.Parameters["@Terminal"].Value = lineCode;
                 conn.Open();
-                using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        output = (string)reader["Output"];
+                        output = reader.GetString(reader.GetOrdinal("Output"));
                     }
                 }
             }
+            Console.WriteLine("Output is: {0}", output);
             return output;
         }
         public string GetTermCode(string listID, string port, string pier, string type, bool toThrow)
@@ -75,7 +81,7 @@ namespace ConversionReader
                 {
                     while (reader.Read())
                     {
-                        output = (string)reader["Output"];
+                        output = (string)reader["output"];
                     }
                 }
             }
