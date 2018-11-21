@@ -44,7 +44,7 @@ namespace ConversionReader
 
         }
 
-        public string GetLineCode(string listID, string lineCode, bool toThrow)
+        public string GetLineCode(string listID, string terminal, bool toThrow)
         {
             string output = "";
             try
@@ -56,7 +56,7 @@ namespace ConversionReader
                     sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
                     sqlCommand.Parameters["@ListId"].Value = listID;
                     sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
-                    sqlCommand.Parameters["@Terminal"].Value = lineCode;
+                    sqlCommand.Parameters["@Terminal"].Value = terminal;
                     conn.Open();
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
@@ -87,7 +87,7 @@ namespace ConversionReader
                         sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
                         sqlCommand.Parameters["@ListId"].Value = "DEFAULT";
                         sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
-                        sqlCommand.Parameters["@Terminal"].Value = lineCode;
+                        sqlCommand.Parameters["@Terminal"].Value = terminal;
                         conn.Open();
                         using (SqlDataReader reader = sqlCommand.ExecuteReader())
                         {
