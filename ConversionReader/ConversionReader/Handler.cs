@@ -44,44 +44,128 @@ namespace ConversionReader
 
         }
 
-        public string GetLineCode(string listID, string lineCode, string type, bool toThrow)
+        public string GetLineCode(string listID, string lineCode, bool toThrow)
         {
             string output = "";
-            using (var conn = new SqlConnection(connectionstring))
+            try
             {
-                sqlCommand = new SqlCommand("dbo.GetLinecode", conn);
-                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
-                sqlCommand.Parameters["@ListId"].Value = listID;
-                sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
-                sqlCommand.Parameters["@Terminal"].Value = lineCode;
-                conn.Open();
-                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                using (var conn = new SqlConnection(connectionstring))
                 {
-                    while (reader.Read())
+                    sqlCommand = new SqlCommand("dbo.GetLinecode", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
+                    sqlCommand.Parameters["@ListId"].Value = listID;
+                    sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
+                    sqlCommand.Parameters["@Terminal"].Value = lineCode;
+                    conn.Open();
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        output = reader.GetString(reader.GetOrdinal("Output"));
+                        while (reader.Read())
+                        {
+                            output = reader.GetString(reader.GetOrdinal("Output"));
+                        }
                     }
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                if(toThrow == true)
+                {
+                    throw ex;
+                }
+
+            }
+            if(output == "")
+            {
+                try
+                {
+                    using (var conn = new SqlConnection(connectionstring))
+                    {
+                        sqlCommand = new SqlCommand("dbo.GetLinecode", conn);
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
+                        sqlCommand.Parameters["@ListId"].Value = "DEFAULT";
+                        sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
+                        sqlCommand.Parameters["@Terminal"].Value = lineCode;
+                        conn.Open();
+                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                output = reader.GetString(reader.GetOrdinal("Output"));
+                            }
+                        }
+                        conn.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (toThrow == true)
+                    {
+                        throw ex;
+                    }
+
                 }
             }
             Console.WriteLine("Output is: {0}", output);
             return output;
         }
-        public string GetTermCode(string listID, string port, string pier, string type, bool toThrow)
+        public string GetTermCode(string listID, string port, string pier, bool toThrow)
         {
             string output = "";
-            using (var conn = new SqlConnection(connectionstring))
-            using (sqlCommand = new SqlCommand("GetTerminal", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+            try
             {
-                sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
-                sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
-                sqlCommand.Parameters.Add(new SqlParameter("@Pier", pier));
-                conn.Open();
-                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                using (var conn = new SqlConnection(connectionstring))
+                using (sqlCommand = new SqlCommand("dbo.GetTerminal", conn) { CommandType = System.Data.CommandType.StoredProcedure })
                 {
-                    while (reader.Read())
+                    sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
+                    sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
+                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", pier));
+                    conn.Open();
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        output = (string)reader["output"];
+                        while (reader.Read())
+                        {
+                            output = (string)reader["output"];
+                        }
+                    }
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                if(toThrow == true)
+                {
+                    throw ex;
+                }
+            }
+            if(output == "")
+            {
+                try
+                {
+                    using (var conn = new SqlConnection(connectionstring))
+                    using (sqlCommand = new SqlCommand("dbo.GetTerminal", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@listId", "DEFAULT"));
+                        sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
+                        sqlCommand.Parameters.Add(new SqlParameter("@Pier", pier));
+                        conn.Open();
+                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                output = (string)reader["output"];
+                            }
+                        }
+                        conn.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (toThrow == true)
+                    {
+                        throw ex;
                     }
                 }
             }
