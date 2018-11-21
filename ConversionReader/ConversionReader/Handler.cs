@@ -117,17 +117,22 @@ namespace ConversionReader
             try
             {
                 using (var conn = new SqlConnection(connectionstring))
-                using (sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+                
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
-                    sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
-                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", pier));
+                    sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@listId", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@ListId"].Value = listID;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Port"].Value = port;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Pier"].Value = pier;
                     conn.Open();
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output = (string)reader["output"];
+                            output = reader.GetString(reader.GetOrdinal("output"));
                         }
                     }
                     conn.Dispose();
@@ -169,6 +174,7 @@ namespace ConversionReader
                     }
                 }
             }
+            Console.WriteLine("Output is: {0}", output);
             return output;
         }
     }

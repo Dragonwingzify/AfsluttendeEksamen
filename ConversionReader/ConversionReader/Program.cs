@@ -15,7 +15,9 @@ namespace ConversionReader
         
         static void Main(string[] args)
         {
-            handler.GetFromLineCode("DEFAULT", "5098", true);
+            handler.GetFromLineCode("DEFAULT", "1370", true);
+            Console.ReadKey();
+            handler.GetFromPortAndPier("TEST", "PORT", "PIER", true);
             Console.ReadKey();
             //MainWindow form1 = new MainWindow();
             //Application.Run(form1);
