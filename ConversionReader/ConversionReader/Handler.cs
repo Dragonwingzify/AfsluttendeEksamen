@@ -44,25 +44,25 @@ namespace ConversionReader
 
         }
 
-        public string GetLineCode(string listID, string terminal, bool toThrow)
+        public string GetFromLineCode(string listID, string lineCode, bool toThrow)
         {
             string output = "";
             try
             {
                 using (var conn = new SqlConnection(connectionstring))
                 {
-                    sqlCommand = new SqlCommand("dbo.GetLinecode", conn);
+                    sqlCommand = new SqlCommand("dbo.GetFromLineCode", conn);
                     sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
+                    sqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
                     sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
-                    sqlCommand.Parameters["@Terminal"].Value = terminal;
+                    sqlCommand.Parameters.Add("@Linecode", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@Linecode"].Value = lineCode;
                     conn.Open();
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output = reader.GetString(reader.GetOrdinal("Output"));
+                            output = reader.GetString(reader.GetOrdinal("output"));
                         }
                     }
                     conn.Dispose();
@@ -82,18 +82,18 @@ namespace ConversionReader
                 {
                     using (var conn = new SqlConnection(connectionstring))
                     {
-                        sqlCommand = new SqlCommand("dbo.GetLinecode", conn);
+                        sqlCommand = new SqlCommand("dbo.GetFromLineCode", conn);
                         sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlCommand.Parameters.Add("@ListId", SqlDbType.VarChar);
+                        sqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
                         sqlCommand.Parameters["@ListId"].Value = "DEFAULT";
-                        sqlCommand.Parameters.Add("@Terminal", SqlDbType.VarChar);
-                        sqlCommand.Parameters["@Terminal"].Value = terminal;
+                        sqlCommand.Parameters.Add("@Linecode", SqlDbType.NVarChar);
+                        sqlCommand.Parameters["@Linecode"].Value = lineCode;
                         conn.Open();
                         using (SqlDataReader reader = sqlCommand.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                output = reader.GetString(reader.GetOrdinal("Output"));
+                                output = reader.GetString(reader.GetOrdinal("output"));
                             }
                         }
                         conn.Dispose();
@@ -111,13 +111,13 @@ namespace ConversionReader
             Console.WriteLine("Output is: {0}", output);
             return output;
         }
-        public string GetTermCode(string listID, string port, string pier, bool toThrow)
+        public string GetFromPortAndPier(string listID, string port, string pier, bool toThrow)
         {
             string output = "";
             try
             {
                 using (var conn = new SqlConnection(connectionstring))
-                using (sqlCommand = new SqlCommand("dbo.GetTerminal", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+                using (sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn) { CommandType = System.Data.CommandType.StoredProcedure })
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("@listId", listID));
                     sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
@@ -145,7 +145,7 @@ namespace ConversionReader
                 try
                 {
                     using (var conn = new SqlConnection(connectionstring))
-                    using (sqlCommand = new SqlCommand("dbo.GetTerminal", conn) { CommandType = System.Data.CommandType.StoredProcedure })
+                    using (sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn) { CommandType = System.Data.CommandType.StoredProcedure })
                     {
                         sqlCommand.Parameters.Add(new SqlParameter("@listId", "DEFAULT"));
                         sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
