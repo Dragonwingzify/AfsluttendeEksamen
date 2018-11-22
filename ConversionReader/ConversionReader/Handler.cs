@@ -152,9 +152,12 @@ namespace ConversionReader
                     using (var conn = new SqlConnection(connectionstring))
                     using (sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn) { CommandType = System.Data.CommandType.StoredProcedure })
                     {
-                        sqlCommand.Parameters.Add(new SqlParameter("@listId", "DEFAULT"));
-                        sqlCommand.Parameters.Add(new SqlParameter("@Port", port));
-                        sqlCommand.Parameters.Add(new SqlParameter("@Pier", pier));
+                        sqlCommand.Parameters.Add(new SqlParameter("@listId", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@ListId"].Value = "DEFAULT";
+                        sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input1"].Value = port;
+                        sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = pier;
                         conn.Open();
                         using (SqlDataReader reader = sqlCommand.ExecuteReader())
                         {
