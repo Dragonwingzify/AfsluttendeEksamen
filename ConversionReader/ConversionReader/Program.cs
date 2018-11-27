@@ -17,7 +17,7 @@ namespace ConversionReader
         {
             handler.GetFromLineCode("DEFAULT", "1370", true);
             Console.ReadKey();
-            handler.GetFromPortAndPier("TEST", "PORT", "PIER", true);
+            handler.GetFromPortAndPier("MISK", "DKAAR", "FCT", false);
             Console.ReadKey();
             //MainWindow form1 = new MainWindow();
             //Application.Run(form1);

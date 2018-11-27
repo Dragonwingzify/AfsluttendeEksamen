@@ -15,10 +15,10 @@ namespace ConversionReader
     class Handler
     {
         //Fields: SQL Data object which references the ConversionReader table
-        
+
         SqlCommand sqlCommand;
-       string connectionstring = @"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
-       public string sql;
+        string connectionstring = @"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
+        public string sql;
         string cmdSqlGet;
 
         public Handler(string sqlServer)
@@ -70,43 +70,11 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
-                if(toThrow == true)
+                if (toThrow == true)
                 {
                     throw ex;
                 }
 
-            }
-            if(output == "")
-            {
-                try
-                {
-                    using (var conn = new SqlConnection(connectionstring))
-                    {
-                        sqlCommand = new SqlCommand("dbo.GetFromLineCode", conn);
-                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
-                        sqlCommand.Parameters["@ListId"].Value = "DEFAULT";
-                        sqlCommand.Parameters.Add("@Linecode", SqlDbType.NVarChar);
-                        sqlCommand.Parameters["@Linecode"].Value = lineCode;
-                        conn.Open();
-                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                output = reader.GetString(reader.GetOrdinal("output"));
-                            }
-                        }
-                        conn.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (toThrow == true)
-                    {
-                        throw ex;
-                    }
-
-                }
             }
             Console.WriteLine("Output is: {0}", output);
             return output;
@@ -117,7 +85,7 @@ namespace ConversionReader
             try
             {
                 using (var conn = new SqlConnection(connectionstring))
-                
+
                 {
                     sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn);
                     sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -140,41 +108,9 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
-                if(toThrow == true)
+                if (toThrow == true)
                 {
                     throw ex;
-                }
-            }
-            if(output == "")
-            {
-                try
-                {
-                    using (var conn = new SqlConnection(connectionstring))
-                    using (sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn) { CommandType = System.Data.CommandType.StoredProcedure })
-                    {
-                        sqlCommand.Parameters.Add(new SqlParameter("@listId", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@ListId"].Value = "DEFAULT";
-                        sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@Input1"].Value = port;
-                        sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@Input2"].Value = pier;
-                        conn.Open();
-                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                output = (string)reader["output"];
-                            }
-                        }
-                        conn.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (toThrow == true)
-                    {
-                        throw ex;
-                    }
                 }
             }
             Console.WriteLine("Output is: {0}", output);
