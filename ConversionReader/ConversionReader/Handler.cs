@@ -12,7 +12,7 @@ enum SQL
 };
 namespace ConversionReader
 {
-    class Handler
+    public class Handler
     {
         //Fields: SQL Data object which references the ConversionReader table
 
