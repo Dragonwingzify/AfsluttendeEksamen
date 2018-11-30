@@ -22,14 +22,14 @@ namespace ConversionReader
         {
             this.Hide();
             var form2 = new Form2();
-            form2.Show();
+            form2.ShowDialog();
         }
 
         private void Table_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form3 = new Form3();
-            form3.Show();
+            form3.ShowDialog();
         }
 
         private void Exit_Click(object sender, EventArgs e)

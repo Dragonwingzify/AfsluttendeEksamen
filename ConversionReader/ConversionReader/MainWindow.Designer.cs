@@ -36,9 +36,9 @@
             // 
             // Converts
             // 
-            this.Converts.Location = new System.Drawing.Point(298, 133);
+            this.Converts.Location = new System.Drawing.Point(298, 136);
             this.Converts.Name = "Converts";
-            this.Converts.Size = new System.Drawing.Size(178, 23);
+            this.Converts.Size = new System.Drawing.Size(178, 57);
             this.Converts.TabIndex = 0;
             this.Converts.Text = "Show converts";
             this.Converts.UseVisualStyleBackColor = true;
@@ -46,9 +46,9 @@
             // 
             // Table
             // 
-            this.Table.Location = new System.Drawing.Point(298, 210);
+            this.Table.Location = new System.Drawing.Point(298, 240);
             this.Table.Name = "Table";
-            this.Table.Size = new System.Drawing.Size(178, 23);
+            this.Table.Size = new System.Drawing.Size(178, 57);
             this.Table.TabIndex = 1;
             this.Table.Text = "Show tables";
             this.Table.UseVisualStyleBackColor = true;
