@@ -53,6 +53,7 @@
             this.btnRtrnMain.TabIndex = 0;
             this.btnRtrnMain.Text = "Return";
             this.btnRtrnMain.UseVisualStyleBackColor = true;
+            this.btnRtrnMain.Click += new System.EventHandler(this.btnRtrnMain_Click);
             // 
             // groupBox1
             // 
@@ -129,6 +130,7 @@
             this.btnGoTable.TabIndex = 4;
             this.btnGoTable.Text = "Go To Table";
             this.btnGoTable.UseVisualStyleBackColor = true;
+            this.btnGoTable.Click += new System.EventHandler(this.btnGoTable_Click);
             // 
             // boxSlctType
             // 
@@ -176,6 +178,7 @@
             this.Controls.Add(this.InputBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRtrnMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form2";
             this.Text = "Form2";
             this.groupBox1.ResumeLayout(false);
