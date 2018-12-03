@@ -28,109 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnRtrnMain = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnWrite = new System.Windows.Forms.Button();
+            this.btnAddRow = new System.Windows.Forms.Button();
+            this.btnDelRow = new System.Windows.Forms.Button();
+            this.btnEditRow = new System.Windows.Forms.Button();
+            this.InputBox = new System.Windows.Forms.ListBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnGoTable = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnRtrnMain
             // 
-            this.button1.Location = new System.Drawing.Point(12, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Return";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(486, 59);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 1;
+            this.btnRtrnMain.Location = new System.Drawing.Point(13, 415);
+            this.btnRtrnMain.Name = "btnRtrnMain";
+            this.btnRtrnMain.Size = new System.Drawing.Size(75, 23);
+            this.btnRtrnMain.TabIndex = 0;
+            this.btnRtrnMain.Text = "Return";
+            this.btnRtrnMain.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Location = new System.Drawing.Point(102, 43);
+            this.groupBox1.Controls.Add(this.btnEditRow);
+            this.groupBox1.Controls.Add(this.btnDelRow);
+            this.groupBox1.Controls.Add(this.btnAddRow);
+            this.groupBox1.Controls.Add(this.btnWrite);
+            this.groupBox1.Location = new System.Drawing.Point(112, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 222);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.Size = new System.Drawing.Size(157, 238);
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation";
-            //
-            // button6
             // 
-            this.button6.Location = new System.Drawing.Point(615, 159);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Submit";
-            this.button6.UseVisualStyleBackColor = true;
+            // btnWrite
             // 
-            // button7
+            this.btnWrite.Location = new System.Drawing.Point(7, 22);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(144, 41);
+            this.btnWrite.TabIndex = 0;
+            this.btnWrite.Text = "Write Conversion";
+            this.btnWrite.UseVisualStyleBackColor = true;
             // 
-            this.button7.Location = new System.Drawing.Point(615, 405);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(141, 33);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "Go To Table";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // btnAddRow
             // 
-            // button2
+            this.btnAddRow.Location = new System.Drawing.Point(6, 69);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(144, 41);
+            this.btnAddRow.TabIndex = 1;
+            this.btnAddRow.Text = "Add Row";
+            this.btnAddRow.UseVisualStyleBackColor = true;
             // 
-            this.button2.Location = new System.Drawing.Point(6, 84);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(188, 37);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Add Row";
-            this.button2.UseVisualStyleBackColor = true;
+            // btnDelRow
             // 
-            // button4
+            this.btnDelRow.Location = new System.Drawing.Point(6, 116);
+            this.btnDelRow.Name = "btnDelRow";
+            this.btnDelRow.Size = new System.Drawing.Size(144, 41);
+            this.btnDelRow.TabIndex = 2;
+            this.btnDelRow.Text = "Delete Row";
+            this.btnDelRow.UseVisualStyleBackColor = true;
             // 
-            this.button4.Location = new System.Drawing.Point(6, 127);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(188, 37);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Delete Row";
-            this.button4.UseVisualStyleBackColor = true;
+            // btnEditRow
             // 
-            // button5
+            this.btnEditRow.Location = new System.Drawing.Point(6, 163);
+            this.btnEditRow.Name = "btnEditRow";
+            this.btnEditRow.Size = new System.Drawing.Size(144, 41);
+            this.btnEditRow.TabIndex = 3;
+            this.btnEditRow.Text = "Edit Row";
+            this.btnEditRow.UseVisualStyleBackColor = true;
             // 
-            this.button5.Location = new System.Drawing.Point(6, 170);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(188, 37);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Edit Row";
-            this.button5.UseVisualStyleBackColor = true;
+            // InputBox
+            // 
+            this.InputBox.FormattingEnabled = true;
+            this.InputBox.ItemHeight = 16;
+            this.InputBox.Location = new System.Drawing.Point(554, 93);
+            this.InputBox.Name = "InputBox";
+            this.InputBox.Size = new System.Drawing.Size(120, 84);
+            this.InputBox.TabIndex = 2;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(599, 183);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 3;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            // 
+            // btnGoTable
+            // 
+            this.btnGoTable.Location = new System.Drawing.Point(676, 401);
+            this.btnGoTable.Name = "btnGoTable";
+            this.btnGoTable.Size = new System.Drawing.Size(112, 37);
+            this.btnGoTable.TabIndex = 4;
+            this.btnGoTable.Text = "Go To Table";
+            this.btnGoTable.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnGoTable);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.InputBox);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRtrnMain);
             this.Name = "Form2";
             this.Text = "Form2";
             this.groupBox1.ResumeLayout(false);
@@ -140,14 +144,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnRtrnMain;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEditRow;
+        private System.Windows.Forms.Button btnDelRow;
+        private System.Windows.Forms.Button btnAddRow;
+        private System.Windows.Forms.Button btnWrite;
+        private System.Windows.Forms.ListBox InputBox;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnGoTable;
     }
 }

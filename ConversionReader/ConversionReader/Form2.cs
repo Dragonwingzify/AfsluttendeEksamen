@@ -16,20 +16,5 @@ namespace ConversionReader
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var form = new MainWindow();
-            form.Show();
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var form3 = new Form3();
-            form3.Show();
-        }
     }
 }
