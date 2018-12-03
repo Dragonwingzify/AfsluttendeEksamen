@@ -14,6 +14,7 @@ namespace ConversionReader
     {
         public MainWindow()
         {
+            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 

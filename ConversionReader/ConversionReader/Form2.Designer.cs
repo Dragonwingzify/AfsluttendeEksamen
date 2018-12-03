@@ -30,10 +30,10 @@
         {
             this.btnRtrnMain = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnWrite = new System.Windows.Forms.Button();
-            this.btnAddRow = new System.Windows.Forms.Button();
-            this.btnDelRow = new System.Windows.Forms.Button();
             this.btnEditRow = new System.Windows.Forms.Button();
+            this.btnDelRow = new System.Windows.Forms.Button();
+            this.btnAddRow = new System.Windows.Forms.Button();
+            this.btnWrite = new System.Windows.Forms.Button();
             this.InputBox = new System.Windows.Forms.ListBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnGoTable = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.btnRtrnMain.TabIndex = 0;
             this.btnRtrnMain.Text = "Return";
             this.btnRtrnMain.UseVisualStyleBackColor = true;
+            this.btnRtrnMain.Click += new System.EventHandler(this.btnRtrnMain_Click);
             // 
             // groupBox1
             // 
@@ -62,23 +63,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation";
             // 
-            // btnWrite
+            // btnEditRow
             // 
-            this.btnWrite.Location = new System.Drawing.Point(7, 22);
-            this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(144, 41);
-            this.btnWrite.TabIndex = 0;
-            this.btnWrite.Text = "Write Conversion";
-            this.btnWrite.UseVisualStyleBackColor = true;
-            // 
-            // btnAddRow
-            // 
-            this.btnAddRow.Location = new System.Drawing.Point(6, 69);
-            this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(144, 41);
-            this.btnAddRow.TabIndex = 1;
-            this.btnAddRow.Text = "Add Row";
-            this.btnAddRow.UseVisualStyleBackColor = true;
+            this.btnEditRow.Location = new System.Drawing.Point(6, 163);
+            this.btnEditRow.Name = "btnEditRow";
+            this.btnEditRow.Size = new System.Drawing.Size(144, 41);
+            this.btnEditRow.TabIndex = 3;
+            this.btnEditRow.Text = "Edit Row";
+            this.btnEditRow.UseVisualStyleBackColor = true;
             // 
             // btnDelRow
             // 
@@ -89,14 +81,23 @@
             this.btnDelRow.Text = "Delete Row";
             this.btnDelRow.UseVisualStyleBackColor = true;
             // 
-            // btnEditRow
+            // btnAddRow
             // 
-            this.btnEditRow.Location = new System.Drawing.Point(6, 163);
-            this.btnEditRow.Name = "btnEditRow";
-            this.btnEditRow.Size = new System.Drawing.Size(144, 41);
-            this.btnEditRow.TabIndex = 3;
-            this.btnEditRow.Text = "Edit Row";
-            this.btnEditRow.UseVisualStyleBackColor = true;
+            this.btnAddRow.Location = new System.Drawing.Point(6, 69);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(144, 41);
+            this.btnAddRow.TabIndex = 1;
+            this.btnAddRow.Text = "Add Row";
+            this.btnAddRow.UseVisualStyleBackColor = true;
+            // 
+            // btnWrite
+            // 
+            this.btnWrite.Location = new System.Drawing.Point(7, 22);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(144, 41);
+            this.btnWrite.TabIndex = 0;
+            this.btnWrite.Text = "Write Conversion";
+            this.btnWrite.UseVisualStyleBackColor = true;
             // 
             // InputBox
             // 
@@ -124,6 +125,7 @@
             this.btnGoTable.TabIndex = 4;
             this.btnGoTable.Text = "Go To Table";
             this.btnGoTable.UseVisualStyleBackColor = true;
+            this.btnGoTable.Click += new System.EventHandler(this.btnGoTable_Click);
             // 
             // Form2
             // 
@@ -135,6 +137,7 @@
             this.Controls.Add(this.InputBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRtrnMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form2";
             this.Text = "Form2";
             this.groupBox1.ResumeLayout(false);

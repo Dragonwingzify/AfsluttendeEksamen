@@ -14,6 +14,7 @@ namespace ConversionReader
     {
         public Form3()
         {
+            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
@@ -21,7 +22,7 @@ namespace ConversionReader
         {
             this.Hide();
             Form2 form2 = new Form2();
-            form2.Show();
+            form2.ShowDialog();
         }
     }
 }

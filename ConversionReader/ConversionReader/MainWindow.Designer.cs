@@ -84,6 +84,7 @@
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Converts);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.ResumeLayout(false);

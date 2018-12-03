@@ -14,7 +14,23 @@ namespace ConversionReader
     {
         public Form2()
         {
+            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+        }
+
+        private void btnRtrnMain_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new MainWindow();
+            form.ShowDialog();
+            
+        }
+
+        private void btnGoTable_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form3 = new Form3();
+            form3.ShowDialog();
         }
     }
 }
