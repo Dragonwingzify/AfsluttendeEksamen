@@ -31,8 +31,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -72,16 +74,7 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 41);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 37);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Write Conversion";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
+            //
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(615, 159);
@@ -99,6 +92,7 @@
             this.button7.TabIndex = 4;
             this.button7.Text = "Go To Table";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button2
             // 
