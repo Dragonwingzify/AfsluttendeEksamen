@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ConversionReader.MainWindow;
 
 namespace ConversionReader
 {
@@ -17,12 +18,27 @@ namespace ConversionReader
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
-
+       
+       
         private void BackButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form2 form2 = new Form2();
-            form2.ShowDialog();
+
+            if ( switchForm != true)
+            {
+                switchForm = true;
+                this.Hide();
+                MainWindow mainForm = new MainWindow();
+                mainForm.ShowDialog();
+            }
+            else
+            {
+                switchForm = false;
+                this.Hide();
+                Form2 form2 = new Form2();
+                form2.ShowDialog();
+            }
+
+
         }
     }
 }
