@@ -38,8 +38,8 @@
             this.btnGoTable = new System.Windows.Forms.Button();
             this.boxSlctType = new System.Windows.Forms.ComboBox();
             this.txtListId = new System.Windows.Forms.TextBox();
-            this.pnlWriteCnvrt = new System.Windows.Forms.Panel();
             this.pnlSubmit = new System.Windows.Forms.GroupBox();
+            this.boxSbmLId = new System.Windows.Forms.TextBox();
             this.txtSbmOut = new System.Windows.Forms.Label();
             this.txtSbmIn2 = new System.Windows.Forms.Label();
             this.txtSbmIn1 = new System.Windows.Forms.Label();
@@ -65,13 +65,17 @@
             this.lblInput1 = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
             this.lblSelectionHelp = new System.Windows.Forms.Label();
-            this.boxSbmLId = new System.Windows.Forms.TextBox();
+            this.chkExcptn = new System.Windows.Forms.CheckBox();
+            this.lblExcptn = new System.Windows.Forms.Label();
+            this.pnlException = new System.Windows.Forms.Panel();
+            this.gBoxMain = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.pnlWriteCnvrt.SuspendLayout();
             this.pnlSubmit.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlPortPier.SuspendLayout();
             this.pnlLinecode.SuspendLayout();
+            this.pnlException.SuspendLayout();
+            this.gBoxMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRtrnMain
@@ -89,9 +93,9 @@
             this.groupBox1.Controls.Add(this.btnEditRow);
             this.groupBox1.Controls.Add(this.btnDelRow);
             this.groupBox1.Controls.Add(this.btnAddRow);
-            this.groupBox1.Location = new System.Drawing.Point(62, 166);
+            this.groupBox1.Location = new System.Drawing.Point(26, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(157, 175);
+            this.groupBox1.Size = new System.Drawing.Size(158, 359);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation";
@@ -128,19 +132,19 @@
             // 
             this.OutputBox.FormattingEnabled = true;
             this.OutputBox.ItemHeight = 16;
-            this.OutputBox.Location = new System.Drawing.Point(381, 32);
+            this.OutputBox.Location = new System.Drawing.Point(375, 127);
             this.OutputBox.Name = "OutputBox";
-            this.OutputBox.Size = new System.Drawing.Size(111, 52);
+            this.OutputBox.Size = new System.Drawing.Size(145, 116);
             this.OutputBox.TabIndex = 2;
             this.OutputBox.SelectedIndexChanged += new System.EventHandler(this.OutputBox_SelectedIndexChanged);
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(226, 32);
+            this.btnSubmit.Location = new System.Drawing.Point(375, 47);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(117, 52);
+            this.btnSubmit.Size = new System.Drawing.Size(145, 48);
             this.btnSubmit.TabIndex = 3;
-            this.btnSubmit.Text = "Convert";
+            this.btnSubmit.Text = "Get Data";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -160,7 +164,7 @@
             this.boxSlctType.Items.AddRange(new object[] {
             "Linecode -> Partner tag",
             "Port & Pier -> Terminal code"});
-            this.boxSlctType.Location = new System.Drawing.Point(6, 33);
+            this.boxSlctType.Location = new System.Drawing.Point(16, 47);
             this.boxSlctType.Name = "boxSlctType";
             this.boxSlctType.Size = new System.Drawing.Size(198, 24);
             this.boxSlctType.TabIndex = 5;
@@ -174,16 +178,6 @@
             this.txtListId.TabIndex = 6;
             this.txtListId.TextChanged += new System.EventHandler(this.txtListId_TextChanged);
             // 
-            // pnlWriteCnvrt
-            // 
-            this.pnlWriteCnvrt.Controls.Add(this.pnlSubmit);
-            this.pnlWriteCnvrt.Controls.Add(this.panel2);
-            this.pnlWriteCnvrt.Location = new System.Drawing.Point(239, 12);
-            this.pnlWriteCnvrt.Name = "pnlWriteCnvrt";
-            this.pnlWriteCnvrt.Size = new System.Drawing.Size(510, 349);
-            this.pnlWriteCnvrt.TabIndex = 7;
-            this.pnlWriteCnvrt.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlWriteCnvrt_Paint);
-            // 
             // pnlSubmit
             // 
             this.pnlSubmit.Controls.Add(this.boxSbmLId);
@@ -195,13 +189,21 @@
             this.pnlSubmit.Controls.Add(this.boxSbmIn2);
             this.pnlSubmit.Controls.Add(this.boxSbmIn1);
             this.pnlSubmit.Controls.Add(this.btnSbmSubmit);
-            this.pnlSubmit.Location = new System.Drawing.Point(3, 205);
+            this.pnlSubmit.Location = new System.Drawing.Point(190, 282);
             this.pnlSubmit.Name = "pnlSubmit";
-            this.pnlSubmit.Size = new System.Drawing.Size(504, 141);
+            this.pnlSubmit.Size = new System.Drawing.Size(535, 100);
             this.pnlSubmit.TabIndex = 14;
             this.pnlSubmit.TabStop = false;
             this.pnlSubmit.Text = "Submit to table";
             this.pnlSubmit.Enter += new System.EventHandler(this.pnlSubmit_Enter);
+            // 
+            // boxSbmLId
+            // 
+            this.boxSbmLId.Location = new System.Drawing.Point(3, 43);
+            this.boxSbmLId.Name = "boxSbmLId";
+            this.boxSbmLId.Size = new System.Drawing.Size(91, 22);
+            this.boxSbmLId.TabIndex = 10;
+            this.boxSbmLId.TextChanged += new System.EventHandler(this.boxSbmLId_TextChanged);
             // 
             // txtSbmOut
             // 
@@ -241,10 +243,11 @@
             // 
             // boxSbmOut
             // 
-            this.boxSbmOut.Location = new System.Drawing.Point(297, 43);
+            this.boxSbmOut.Location = new System.Drawing.Point(300, 43);
             this.boxSbmOut.Name = "boxSbmOut";
-            this.boxSbmOut.Size = new System.Drawing.Size(91, 22);
+            this.boxSbmOut.Size = new System.Drawing.Size(77, 22);
             this.boxSbmOut.TabIndex = 4;
+            this.boxSbmOut.TextChanged += new System.EventHandler(this.boxSbmOut_TextChanged);
             // 
             // boxSbmIn2
             // 
@@ -262,7 +265,7 @@
             // 
             // btnSbmSubmit
             // 
-            this.btnSbmSubmit.Location = new System.Drawing.Point(381, 83);
+            this.btnSbmSubmit.Location = new System.Drawing.Point(403, 42);
             this.btnSbmSubmit.Name = "btnSbmSubmit";
             this.btnSbmSubmit.Size = new System.Drawing.Size(117, 52);
             this.btnSbmSubmit.TabIndex = 0;
@@ -271,18 +274,14 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pnlException);
             this.panel2.Controls.Add(this.pnlPortPier);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pnlLinecode);
-            this.panel2.Controls.Add(this.lblResult);
-            this.panel2.Controls.Add(this.lblSelectionHelp);
-            this.panel2.Controls.Add(this.btnSubmit);
-            this.panel2.Controls.Add(this.boxSlctType);
-            this.panel2.Controls.Add(this.OutputBox);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(16, 73);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(504, 200);
+            this.panel2.Size = new System.Drawing.Size(332, 170);
             this.panel2.TabIndex = 12;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pnlPortPier
             // 
@@ -293,9 +292,9 @@
             this.pnlPortPier.Controls.Add(this.txtPort);
             this.pnlPortPier.Controls.Add(this.txtListId_Ex);
             this.pnlPortPier.Controls.Add(this.lblPort);
-            this.pnlPortPier.Location = new System.Drawing.Point(3, 63);
+            this.pnlPortPier.Location = new System.Drawing.Point(210, 6);
             this.pnlPortPier.Name = "pnlPortPier";
-            this.pnlPortPier.Size = new System.Drawing.Size(201, 133);
+            this.pnlPortPier.Size = new System.Drawing.Size(201, 126);
             this.pnlPortPier.TabIndex = 12;
             // 
             // txtPier
@@ -361,11 +360,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(223, 10);
+            this.label1.Location = new System.Drawing.Point(372, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 17);
+            this.label1.Size = new System.Drawing.Size(122, 17);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Confirm to convert";
+            this.label1.Text = "Check Conversion";
             // 
             // pnlLinecode
             // 
@@ -374,9 +373,9 @@
             this.pnlLinecode.Controls.Add(this.txtListId);
             this.pnlLinecode.Controls.Add(this.txtLinecode);
             this.pnlLinecode.Controls.Add(this.lblInput1);
-            this.pnlLinecode.Location = new System.Drawing.Point(3, 60);
+            this.pnlLinecode.Location = new System.Drawing.Point(3, 3);
             this.pnlLinecode.Name = "pnlLinecode";
-            this.pnlLinecode.Size = new System.Drawing.Size(201, 95);
+            this.pnlLinecode.Size = new System.Drawing.Size(201, 129);
             this.pnlLinecode.TabIndex = 11;
             this.pnlLinecode.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLinecode_Paint);
             // 
@@ -418,35 +417,75 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(378, 10);
+            this.lblResult.Location = new System.Drawing.Point(372, 107);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(48, 17);
+            this.lblResult.Size = new System.Drawing.Size(52, 17);
             this.lblResult.TabIndex = 3;
-            this.lblResult.Text = "Result";
+            this.lblResult.Text = "Result:";
+            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
             // 
             // lblSelectionHelp
             // 
             this.lblSelectionHelp.AutoSize = true;
-            this.lblSelectionHelp.Location = new System.Drawing.Point(3, 10);
+            this.lblSelectionHelp.Location = new System.Drawing.Point(16, 27);
             this.lblSelectionHelp.Name = "lblSelectionHelp";
-            this.lblSelectionHelp.Size = new System.Drawing.Size(124, 17);
+            this.lblSelectionHelp.Size = new System.Drawing.Size(155, 17);
             this.lblSelectionHelp.TabIndex = 10;
-            this.lblSelectionHelp.Text = "Select conversion:";
+            this.lblSelectionHelp.Text = "Select conversion type:";
             // 
-            // boxSbmLId
+            // chkExcptn
             // 
-            this.boxSbmLId.Location = new System.Drawing.Point(3, 43);
-            this.boxSbmLId.Name = "boxSbmLId";
-            this.boxSbmLId.Size = new System.Drawing.Size(91, 22);
-            this.boxSbmLId.TabIndex = 10;
-            this.boxSbmLId.TextChanged += new System.EventHandler(this.boxSbmLId_TextChanged);
+            this.chkExcptn.AutoSize = true;
+            this.chkExcptn.Location = new System.Drawing.Point(153, 6);
+            this.chkExcptn.Name = "chkExcptn";
+            this.chkExcptn.Size = new System.Drawing.Size(18, 17);
+            this.chkExcptn.TabIndex = 14;
+            this.chkExcptn.UseVisualStyleBackColor = true;
+            this.chkExcptn.CheckedChanged += new System.EventHandler(this.chkExcptn_CheckedChanged);
+            // 
+            // lblExcptn
+            // 
+            this.lblExcptn.AutoSize = true;
+            this.lblExcptn.Location = new System.Drawing.Point(6, 6);
+            this.lblExcptn.Name = "lblExcptn";
+            this.lblExcptn.Size = new System.Drawing.Size(116, 17);
+            this.lblExcptn.TabIndex = 15;
+            this.lblExcptn.Text = "Throw Exception:";
+            // 
+            // pnlException
+            // 
+            this.pnlException.Controls.Add(this.lblExcptn);
+            this.pnlException.Controls.Add(this.chkExcptn);
+            this.pnlException.Location = new System.Drawing.Point(3, 138);
+            this.pnlException.Name = "pnlException";
+            this.pnlException.Size = new System.Drawing.Size(201, 29);
+            this.pnlException.TabIndex = 16;
+            this.pnlException.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlException_Paint);
+            // 
+            // gBoxMain
+            // 
+            this.gBoxMain.Controls.Add(this.boxSlctType);
+            this.gBoxMain.Controls.Add(this.panel2);
+            this.gBoxMain.Controls.Add(this.btnSubmit);
+            this.gBoxMain.Controls.Add(this.lblSelectionHelp);
+            this.gBoxMain.Controls.Add(this.lblResult);
+            this.gBoxMain.Controls.Add(this.label1);
+            this.gBoxMain.Controls.Add(this.OutputBox);
+            this.gBoxMain.Location = new System.Drawing.Point(190, 23);
+            this.gBoxMain.Name = "gBoxMain";
+            this.gBoxMain.Size = new System.Drawing.Size(535, 253);
+            this.gBoxMain.TabIndex = 15;
+            this.gBoxMain.TabStop = false;
+            this.gBoxMain.Text = "Conversion selection";
+            this.gBoxMain.Enter += new System.EventHandler(this.gBoxMain_Enter);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlWriteCnvrt);
+            this.Controls.Add(this.gBoxMain);
+            this.Controls.Add(this.pnlSubmit);
             this.Controls.Add(this.btnGoTable);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRtrnMain);
@@ -455,15 +494,17 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
-            this.pnlWriteCnvrt.ResumeLayout(false);
             this.pnlSubmit.ResumeLayout(false);
             this.pnlSubmit.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnlPortPier.ResumeLayout(false);
             this.pnlPortPier.PerformLayout();
             this.pnlLinecode.ResumeLayout(false);
             this.pnlLinecode.PerformLayout();
+            this.pnlException.ResumeLayout(false);
+            this.pnlException.PerformLayout();
+            this.gBoxMain.ResumeLayout(false);
+            this.gBoxMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -480,7 +521,6 @@
         private System.Windows.Forms.Button btnGoTable;
         private System.Windows.Forms.ComboBox boxSlctType;
         private System.Windows.Forms.TextBox txtListId;
-        private System.Windows.Forms.Panel pnlWriteCnvrt;
         private System.Windows.Forms.TextBox txtLinecode;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Panel pnlLinecode;
@@ -508,5 +548,9 @@
         private System.Windows.Forms.TextBox boxSbmIn1;
         private System.Windows.Forms.Button btnSbmSubmit;
         private System.Windows.Forms.TextBox boxSbmLId;
+        private System.Windows.Forms.Label lblExcptn;
+        private System.Windows.Forms.CheckBox chkExcptn;
+        private System.Windows.Forms.Panel pnlException;
+        private System.Windows.Forms.GroupBox gBoxMain;
     }
 }
