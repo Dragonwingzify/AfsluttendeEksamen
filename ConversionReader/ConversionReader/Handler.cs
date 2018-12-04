@@ -116,5 +116,95 @@ namespace ConversionReader
             Console.WriteLine("Output is: {0}", output);
             return output;
         }
+
+        public void SetRow(string listID, string port, string pier, string output, string type)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+
+                {
+                    sqlCommand = new SqlCommand("dbo.SetPartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@ListId"].Value = listID;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Port"].Value = port;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Pier"].Value = pier;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Output"].Value = output;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
+                    sqlCommand.Parameters["@Type"].Value = type;
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Row has been added");
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Row Has Not Been Added");
+            }
+            
+        }
+
+        public void UpdateRow(string currentId, string listID, string port, string pier, string output, string type)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+
+                {
+                    sqlCommand = new SqlCommand("dbo.UpdatePartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
+                    sqlCommand.Parameters["@CurrentId"].Value = currentId;
+                    sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@ListId"].Value = listID;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Port"].Value = port;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Pier"].Value = pier;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Output"].Value = output;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
+                    sqlCommand.Parameters["@Type"].Value = type;
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Row has been Updated");
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Row Has Not Been Updated");
+            }
+
+        }
+
+        public void DeleteRow(string currentId, string listID, string port, string pier, string output, string type)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+
+                {
+                    sqlCommand = new SqlCommand("dbo.DeletePartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
+                    sqlCommand.Parameters["@CurrentId"].Value = currentId;
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Row has been Deleted");
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Row Has Not Been Deleted");
+            }
+
+        }
     }
 }

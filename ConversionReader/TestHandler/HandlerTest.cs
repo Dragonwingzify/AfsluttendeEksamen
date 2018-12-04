@@ -60,5 +60,14 @@ namespace TestHandler
             string output = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCR", false);
             Assert.AreEqual("", output);
         }
+
+        [TestMethod]
+        public void SetNewOutputTest()
+        {
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            handler.SetRow("DEFAULT", "0001", "NULL", "TEST", "1");
+            string output = handler.GetFromLineCode("DEFAULT", "0001", false);
+            Assert.AreEqual("TEST", output);
+        }
     }
 }
