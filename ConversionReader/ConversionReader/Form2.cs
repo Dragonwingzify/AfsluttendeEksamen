@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ConversionReader
 {
     public partial class Form2 : Form
     {
         private int x;
         private int y;
-
         public Form2()
         {
             StartPosition = FormStartPosition.CenterScreen;
@@ -28,17 +28,22 @@ namespace ConversionReader
 
         private void btnRtrnMain_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var form = new MainWindow();
-            form.ShowDialog();
-
+            // If we press backbutton, all other forms than MainWindow will close
+            Form[] forms = Application.OpenForms.Cast<Form>().ToArray();
+            foreach(Form thisForm in forms)
+            {
+                if (thisForm.Name != "MainWindow") thisForm.Close();
+            }
+                this.Hide();
+                var form = new MainWindow();
+                form.ShowDialog();
         }
 
         private void btnGoTable_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             var form3 = new Form3();
-            form3.ShowDialog();
+            form3.Show();
         }
 
         private void pnlWriteCnvrt_Paint(object sender, PaintEventArgs e)

@@ -47,9 +47,9 @@ namespace ConversionReader
             if(tableForm == SwitchForms.showTable)
             {
                 switchForm = false;
-                this.Hide();
+                //this.Hide();
                 var form3 = new Form3();
-                form3.ShowDialog();
+                form3.Show();
             }
 
             
@@ -57,7 +57,7 @@ namespace ConversionReader
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }
