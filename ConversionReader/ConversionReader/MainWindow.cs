@@ -17,11 +17,17 @@ namespace ConversionReader
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Look here, you two
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Converts_Click(object sender, EventArgs e)
         {
+            Handler handler = new Handler("");
             this.Hide();
             var form2 = new Form2();
+            form2.Handler = handler;
             form2.Show();
         }
 
