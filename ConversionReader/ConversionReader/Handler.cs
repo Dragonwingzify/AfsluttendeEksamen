@@ -44,6 +44,109 @@ namespace ConversionReader
 
         }
 
+        /// <summary>
+        /// Creates new row in conversion_platform table
+        /// </summary>
+        /// <param name="listId">The list_id of the row</param>
+        /// <param name="input1">The linecode or port</param>
+        /// <param name="input2">The pier. Should be NULL when type is 1</param>
+        /// <param name="output">The partner tag or terminalcode</param>
+        /// <param name="type">Type, either '1' or '2'</param>
+        public void SetPartner(string listId, string input1, string input2, string output, int type, bool toThrow)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+                {
+                    sqlCommand = new SqlCommand("dbo.SetPartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add("@input1", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@input1"].Value = input1;
+                    sqlCommand.Parameters.Add("@input2", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@input2"].Value = input2;
+                    sqlCommand.Parameters.Add("@output", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@output"].Value = output;
+                    sqlCommand.Parameters.Add("@Type", SqlDbType.Int);
+                    sqlCommand.Parameters["@Type"].Value = type;
+                    conn.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (toThrow == true)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Edits the row in a conversion_platform table.
+        /// </summary>
+        /// <param name="Id">The designated Id of the row to be edited.</param>
+        /// <param name="listId">The list_id of the row</param>
+        /// <param name="input1">The linecode or port</param>
+        /// <param name="input2">The pier. Should be NULL when type is 1</param>
+        /// <param name="output">The partner tag or terminalcode</param>
+        /// <param name="type"></param>
+        public void UpdatePartner(int Id, string listId, string input1, string input2, string output, int type, bool toThrow)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+                {
+                    sqlCommand = new SqlCommand("dbo.UpdatePartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add("@CurrentId", SqlDbType.Int);
+                    sqlCommand.Parameters["@CurrentId"].Value = Id;
+                    sqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@ListId"].Value = listId;
+                    sqlCommand.Parameters.Add("@input1", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@input1"].Value = input1;
+                    sqlCommand.Parameters.Add("@input2", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@input2"].Value = input2;
+                    sqlCommand.Parameters.Add("@output", SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@output"].Value = output;
+                    sqlCommand.Parameters.Add("@Type", SqlDbType.Int);
+                    sqlCommand.Parameters["@Type"].Value = type;
+                    conn.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (toThrow == true)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes the row at a designated Id.
+        /// </summary>
+        /// <param name="Id">The designated Id which matches the row you want to delete.</param>
+        public void DeletePartner(int Id, bool toThrow)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+                {
+                    sqlCommand = new SqlCommand("dbo.DeletePartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add("@CurrentId");
+                    sqlCommand.Parameters["@CurrentId"].Value = Id;
+                    conn.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (toThrow == true)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public string GetFromLineCode(string listID, string lineCode, bool toThrow)
         {
             string output = "";
