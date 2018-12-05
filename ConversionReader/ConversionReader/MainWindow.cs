@@ -57,10 +57,6 @@ namespace ConversionReader
                 form2.ShowDialog();
             }
 
-            this.Hide();
-            var form2 = new Form2();
-            form2.Handler = handler;
-            form2.Show();
 
         }
 
