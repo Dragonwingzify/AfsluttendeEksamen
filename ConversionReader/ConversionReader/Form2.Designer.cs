@@ -49,32 +49,32 @@
             this.boxSbmIn1 = new System.Windows.Forms.TextBox();
             this.btnSbmSubmit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlException = new System.Windows.Forms.Panel();
+            this.lblExcptn = new System.Windows.Forms.Label();
+            this.chkExcptn = new System.Windows.Forms.CheckBox();
             this.pnlPortPier = new System.Windows.Forms.Panel();
             this.txtPier = new System.Windows.Forms.TextBox();
-            this.Pier = new System.Windows.Forms.Label();
+            this.lblPier = new System.Windows.Forms.Label();
             this.lblPortPierHelp = new System.Windows.Forms.Label();
             this.lblListId_Ex = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtListId_Ex = new System.Windows.Forms.TextBox();
             this.lblPort = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlLinecode = new System.Windows.Forms.Panel();
             this.lblLinecodeHelp = new System.Windows.Forms.Label();
             this.lblListId = new System.Windows.Forms.Label();
             this.txtLinecode = new System.Windows.Forms.TextBox();
             this.lblInput1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
             this.lblSelectionHelp = new System.Windows.Forms.Label();
-            this.chkExcptn = new System.Windows.Forms.CheckBox();
-            this.lblExcptn = new System.Windows.Forms.Label();
-            this.pnlException = new System.Windows.Forms.Panel();
             this.gBoxMain = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.pnlSubmit.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlException.SuspendLayout();
             this.pnlPortPier.SuspendLayout();
             this.pnlLinecode.SuspendLayout();
-            this.pnlException.SuspendLayout();
             this.gBoxMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -172,7 +172,7 @@
             // 
             // txtListId
             // 
-            this.txtListId.Location = new System.Drawing.Point(111, 60);
+            this.txtListId.Location = new System.Drawing.Point(108, 32);
             this.txtListId.Name = "txtListId";
             this.txtListId.Size = new System.Drawing.Size(87, 22);
             this.txtListId.TabIndex = 6;
@@ -283,10 +283,39 @@
             this.panel2.TabIndex = 12;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pnlException
+            // 
+            this.pnlException.Controls.Add(this.lblExcptn);
+            this.pnlException.Controls.Add(this.chkExcptn);
+            this.pnlException.Location = new System.Drawing.Point(3, 138);
+            this.pnlException.Name = "pnlException";
+            this.pnlException.Size = new System.Drawing.Size(201, 29);
+            this.pnlException.TabIndex = 16;
+            this.pnlException.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlException_Paint);
+            // 
+            // lblExcptn
+            // 
+            this.lblExcptn.AutoSize = true;
+            this.lblExcptn.Location = new System.Drawing.Point(6, 6);
+            this.lblExcptn.Name = "lblExcptn";
+            this.lblExcptn.Size = new System.Drawing.Size(116, 17);
+            this.lblExcptn.TabIndex = 15;
+            this.lblExcptn.Text = "Throw Exception:";
+            // 
+            // chkExcptn
+            // 
+            this.chkExcptn.AutoSize = true;
+            this.chkExcptn.Location = new System.Drawing.Point(153, 6);
+            this.chkExcptn.Name = "chkExcptn";
+            this.chkExcptn.Size = new System.Drawing.Size(18, 17);
+            this.chkExcptn.TabIndex = 14;
+            this.chkExcptn.UseVisualStyleBackColor = true;
+            this.chkExcptn.CheckedChanged += new System.EventHandler(this.chkExcptn_CheckedChanged);
+            // 
             // pnlPortPier
             // 
             this.pnlPortPier.Controls.Add(this.txtPier);
-            this.pnlPortPier.Controls.Add(this.Pier);
+            this.pnlPortPier.Controls.Add(this.lblPier);
             this.pnlPortPier.Controls.Add(this.lblPortPierHelp);
             this.pnlPortPier.Controls.Add(this.lblListId_Ex);
             this.pnlPortPier.Controls.Add(this.txtPort);
@@ -305,14 +334,14 @@
             this.txtPier.TabIndex = 11;
             this.txtPier.TextChanged += new System.EventHandler(this.txtPier_TextChanged);
             // 
-            // Pier
+            // lblPier
             // 
-            this.Pier.AutoSize = true;
-            this.Pier.Location = new System.Drawing.Point(4, 88);
-            this.Pier.Name = "Pier";
-            this.Pier.Size = new System.Drawing.Size(37, 17);
-            this.Pier.TabIndex = 10;
-            this.Pier.Text = "Pier:";
+            this.lblPier.AutoSize = true;
+            this.lblPier.Location = new System.Drawing.Point(4, 88);
+            this.lblPier.Name = "lblPier";
+            this.lblPier.Size = new System.Drawing.Size(37, 17);
+            this.lblPier.TabIndex = 10;
+            this.lblPier.Text = "Pier:";
             // 
             // lblPortPierHelp
             // 
@@ -357,15 +386,6 @@
             this.lblPort.TabIndex = 9;
             this.lblPort.Text = "Port:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(372, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 17);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Check Conversion";
-            // 
             // pnlLinecode
             // 
             this.pnlLinecode.Controls.Add(this.lblLinecodeHelp);
@@ -399,7 +419,7 @@
             // 
             // txtLinecode
             // 
-            this.txtLinecode.Location = new System.Drawing.Point(111, 32);
+            this.txtLinecode.Location = new System.Drawing.Point(108, 58);
             this.txtLinecode.Name = "txtLinecode";
             this.txtLinecode.Size = new System.Drawing.Size(87, 22);
             this.txtLinecode.TabIndex = 7;
@@ -413,6 +433,15 @@
             this.lblInput1.Size = new System.Drawing.Size(70, 17);
             this.lblInput1.TabIndex = 9;
             this.lblInput1.Text = "Linecode:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(372, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 17);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Check Conversion";
             // 
             // lblResult
             // 
@@ -432,35 +461,6 @@
             this.lblSelectionHelp.Size = new System.Drawing.Size(155, 17);
             this.lblSelectionHelp.TabIndex = 10;
             this.lblSelectionHelp.Text = "Select conversion type:";
-            // 
-            // chkExcptn
-            // 
-            this.chkExcptn.AutoSize = true;
-            this.chkExcptn.Location = new System.Drawing.Point(153, 6);
-            this.chkExcptn.Name = "chkExcptn";
-            this.chkExcptn.Size = new System.Drawing.Size(18, 17);
-            this.chkExcptn.TabIndex = 14;
-            this.chkExcptn.UseVisualStyleBackColor = true;
-            this.chkExcptn.CheckedChanged += new System.EventHandler(this.chkExcptn_CheckedChanged);
-            // 
-            // lblExcptn
-            // 
-            this.lblExcptn.AutoSize = true;
-            this.lblExcptn.Location = new System.Drawing.Point(6, 6);
-            this.lblExcptn.Name = "lblExcptn";
-            this.lblExcptn.Size = new System.Drawing.Size(116, 17);
-            this.lblExcptn.TabIndex = 15;
-            this.lblExcptn.Text = "Throw Exception:";
-            // 
-            // pnlException
-            // 
-            this.pnlException.Controls.Add(this.lblExcptn);
-            this.pnlException.Controls.Add(this.chkExcptn);
-            this.pnlException.Location = new System.Drawing.Point(3, 138);
-            this.pnlException.Name = "pnlException";
-            this.pnlException.Size = new System.Drawing.Size(201, 29);
-            this.pnlException.TabIndex = 16;
-            this.pnlException.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlException_Paint);
             // 
             // gBoxMain
             // 
@@ -497,12 +497,12 @@
             this.pnlSubmit.ResumeLayout(false);
             this.pnlSubmit.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.pnlException.ResumeLayout(false);
+            this.pnlException.PerformLayout();
             this.pnlPortPier.ResumeLayout(false);
             this.pnlPortPier.PerformLayout();
             this.pnlLinecode.ResumeLayout(false);
             this.pnlLinecode.PerformLayout();
-            this.pnlException.ResumeLayout(false);
-            this.pnlException.PerformLayout();
             this.gBoxMain.ResumeLayout(false);
             this.gBoxMain.PerformLayout();
             this.ResumeLayout(false);
@@ -536,7 +536,7 @@
         private System.Windows.Forms.TextBox txtListId_Ex;
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.TextBox txtPier;
-        private System.Windows.Forms.Label Pier;
+        private System.Windows.Forms.Label lblPier;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox pnlSubmit;
         private System.Windows.Forms.Label txtSbmOut;

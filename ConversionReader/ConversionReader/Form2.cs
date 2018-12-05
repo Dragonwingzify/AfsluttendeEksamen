@@ -69,7 +69,6 @@ namespace ConversionReader
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             
-
             //Switch case: Which type is selected in the dropdown?
             switch (boxSlctType.SelectedIndex)
             {
@@ -118,30 +117,32 @@ namespace ConversionReader
 
         }
 
+        #region Textbox input values to variable values
         private void txtLinecode_TextChanged(object sender, EventArgs e)
         {
-            Input1 = txtLinecode.Text;
+            Input1 = txtLinecode.Text; //txtLinecode text is set as Input1 variable's value
         }
 
         private void txtListId_TextChanged(object sender, EventArgs e)
         {
-            ListId = txtListId.Text;
+            ListId = txtListId.Text; //txtListId text is set as ListId variable's value
         }
 
         private void txtListId_Ex_TextChanged(object sender, EventArgs e)
         {
-            ListId = txtListId_Ex.Text;
+            ListId = txtListId_Ex.Text; //ListId variable value is the same as the user-typed input in txtListId_Ex
         }
 
         private void txtPort_TextChanged(object sender, EventArgs e)
         {
-            Input1 = txtPort.Text;
+            Input1 = txtPort.Text; //Input1 is the same as the value in txtPort's input field.
         }
 
         private void txtPier_TextChanged(object sender, EventArgs e)
         {
-            Input2 = txtPort.Text;
+            Input2 = txtPier.Text; //Sets Input2 value to be what the user wrote in the txtPier textbox.
         }
+        #endregion
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

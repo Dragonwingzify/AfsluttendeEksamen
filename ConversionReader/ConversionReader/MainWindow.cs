@@ -21,7 +21,7 @@ namespace ConversionReader
             {
                 if (handler == null)
                 {
-                    handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+                    handler = new Handler("Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
                 }
                 return handler;
             }
