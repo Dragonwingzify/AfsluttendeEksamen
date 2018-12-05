@@ -13,6 +13,19 @@ namespace ConversionReader
     public partial class MainWindow : Form
     {
         public static bool switchForm;
+        //Singleton Handler. Can be used across all forms.
+        private static Handler handler;
+        public static Handler Handler
+        {
+            get
+            {
+                if (handler == null)
+                {
+                    handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+                }
+                return handler;
+            }
+        }
         public enum SwitchForms
         {
             showConvert,
@@ -44,7 +57,7 @@ namespace ConversionReader
         private void Table_Click(object sender, EventArgs e)
         {
             MainWindow.SwitchForms tableForm = SwitchForms.showTable;
-            if(tableForm == SwitchForms.showTable)
+            if (tableForm == SwitchForms.showTable)
             {
                 switchForm = false;
                 //this.Hide();
@@ -52,7 +65,7 @@ namespace ConversionReader
                 form3.Show();
             }
 
-            
+
         }
 
         private void Exit_Click(object sender, EventArgs e)

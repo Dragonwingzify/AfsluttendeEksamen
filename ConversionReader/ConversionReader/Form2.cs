@@ -21,7 +21,8 @@ namespace ConversionReader
         public string Input2 { get; set; }
         public bool ToThrow { get; set; }
         public string Output { get; set; }
-        Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+
+        Handler handler = MainWindow.Handler; //shorthand variable
 
         /*  panel2 is the interface for linecode/port&pier input boxes */
 
@@ -29,7 +30,6 @@ namespace ConversionReader
         {
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
-
             panel2.Visible = false;
 
             //Set location values
