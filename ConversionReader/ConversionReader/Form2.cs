@@ -204,7 +204,7 @@ namespace ConversionReader
 
         private void boxSbmOut_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

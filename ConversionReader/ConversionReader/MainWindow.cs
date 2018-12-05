@@ -40,9 +40,14 @@ namespace ConversionReader
         }
         public SwitchForms MainForm { get; set; }
 
-
+        /// <summary>
+        /// Look here, you two
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Converts_Click(object sender, EventArgs e)
         {
+
             MainWindow.SwitchForms NextForm = SwitchForms.showConvert;
             if (NextForm == SwitchForms.showConvert)
             {
@@ -51,6 +56,11 @@ namespace ConversionReader
                 var form2 = new Form2();
                 form2.ShowDialog();
             }
+
+            this.Hide();
+            var form2 = new Form2();
+            form2.Handler = handler;
+            form2.Show();
 
         }
 
