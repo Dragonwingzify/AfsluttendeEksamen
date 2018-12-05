@@ -69,5 +69,23 @@ namespace TestHandler
             string output = handler.GetFromLineCode("DEFAULT", "0001", false);
             Assert.AreEqual("TEST", output);
         }
+
+        [TestMethod]
+        public void UpdateDataTest()
+        {
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            handler.UpdateRow("113", "DEFAULT", "0002", "NULL", "TESTER", "1");
+            string output = handler.GetFromLineCode("DEFAULT", "0002", false);
+            Assert.AreEqual("TESTER", output);
+        }
+
+        [TestMethod]
+        public void DeleteDataTest()
+        {
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            handler.DeleteRow("113");
+            string output = handler.GetFromLineCode("DEFAULT", "0002", false);
+            Assert.AreEqual("", output);
+        }
     }
 }
