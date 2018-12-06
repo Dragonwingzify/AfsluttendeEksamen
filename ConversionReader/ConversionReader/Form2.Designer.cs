@@ -716,7 +716,6 @@
         private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.ListBox OutputBox;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button btnGoTable;
         private System.Windows.Forms.ComboBox boxSlctType;
         private System.Windows.Forms.TextBox txtListId;
         private System.Windows.Forms.TextBox txtLinecode;
@@ -767,5 +766,6 @@
         private System.Windows.Forms.Label lblSelectId;
         private System.Windows.Forms.TextBox boxGetFromId;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnGoTable;
     }
 }

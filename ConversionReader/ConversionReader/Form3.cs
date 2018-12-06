@@ -24,6 +24,7 @@ namespace ConversionReader
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             this.frm2 = frm;
+
             LoadTable();
         }
 
@@ -52,6 +53,7 @@ namespace ConversionReader
                 switchForm = false;
                 this.Hide();
                 frm2.EnableTableAgain();
+
                 this.Close();
             }
             
