@@ -221,11 +221,11 @@ namespace ConversionReader
 
         private void btnSbmSubmit_Click(object sender, EventArgs e)
         {
-            int type = 0;
+            int type = 1;
             if (boxSlctType.SelectedIndex == 1)
-                type = 0;
-            if (Input2 != null)
                 type = 1;
+            if (Input2 != null)
+                type = 2;
 
                 handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
         }

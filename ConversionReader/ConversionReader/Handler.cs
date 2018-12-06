@@ -137,6 +137,7 @@ namespace ConversionReader
                     sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
                     sqlCommand.Parameters["@Type"].Value = type;
                     conn.Open();
+                    sqlCommand.ExecuteNonQuery();
                     conn.Dispose();
                     Console.WriteLine("Row has been added");
                 }
