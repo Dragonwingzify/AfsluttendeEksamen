@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static ConversionReader.Form2;
 namespace ConversionReader
 {
     public partial class MainWindow : Form
@@ -27,9 +27,17 @@ namespace ConversionReader
         }
         public SwitchForms MainForm { get; set; }
 
-
+        /* When we press the convert button, the foreach loop is closing everything except MainWindow, but at the same time
+        it closes everything we hide the MainWindow by using the "this.Hide()", which in the end opens form2 */
         private void Converts_Click(object sender, EventArgs e)
         {
+            // when pressing the Convert button, all other forms is closed except MainWindow
+            Form[] forms = Application.OpenForms.Cast<Form>().ToArray();
+            foreach (Form thisForm in forms)
+            {
+                if (thisForm.Name != "MainWindow") thisForm.Close();
+            }
+            // Hides MainWindow and opens form2
             MainWindow.SwitchForms NextForm = SwitchForms.showConvert;
             if (NextForm == SwitchForms.showConvert)
             {
@@ -37,6 +45,7 @@ namespace ConversionReader
                 this.Hide();
                 var form2 = new Form2();
                 form2.ShowDialog();
+
             }
 
         }
@@ -47,9 +56,9 @@ namespace ConversionReader
             if(tableForm == SwitchForms.showTable)
             {
                 switchForm = false;
-                //this.Hide();
-                var form3 = new Form3();
+                var form3 = new Form3(this);
                 form3.Show();
+                Table.Enabled = false;
             }
 
             
@@ -58,6 +67,11 @@ namespace ConversionReader
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        // When you exit the "Show tables", this method should enable the button again.
+        public void EnableTableClick()
+        {
+            Table.Enabled = true;
         }
     }
 }

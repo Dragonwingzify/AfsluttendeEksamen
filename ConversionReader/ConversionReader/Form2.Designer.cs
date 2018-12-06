@@ -49,6 +49,9 @@
             this.boxSbmIn1 = new System.Windows.Forms.TextBox();
             this.btnSbmSubmit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlException = new System.Windows.Forms.Panel();
+            this.lblExcptn = new System.Windows.Forms.Label();
+            this.chkExcptn = new System.Windows.Forms.CheckBox();
             this.pnlPortPier = new System.Windows.Forms.Panel();
             this.txtPier = new System.Windows.Forms.TextBox();
             this.Pier = new System.Windows.Forms.Label();
@@ -57,24 +60,21 @@
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtListId_Ex = new System.Windows.Forms.TextBox();
             this.lblPort = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlLinecode = new System.Windows.Forms.Panel();
             this.lblLinecodeHelp = new System.Windows.Forms.Label();
             this.lblListId = new System.Windows.Forms.Label();
             this.txtLinecode = new System.Windows.Forms.TextBox();
             this.lblInput1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
             this.lblSelectionHelp = new System.Windows.Forms.Label();
-            this.chkExcptn = new System.Windows.Forms.CheckBox();
-            this.lblExcptn = new System.Windows.Forms.Label();
-            this.pnlException = new System.Windows.Forms.Panel();
             this.gBoxMain = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.pnlSubmit.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlException.SuspendLayout();
             this.pnlPortPier.SuspendLayout();
             this.pnlLinecode.SuspendLayout();
-            this.pnlException.SuspendLayout();
             this.gBoxMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -283,6 +283,35 @@
             this.panel2.TabIndex = 12;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pnlException
+            // 
+            this.pnlException.Controls.Add(this.lblExcptn);
+            this.pnlException.Controls.Add(this.chkExcptn);
+            this.pnlException.Location = new System.Drawing.Point(3, 138);
+            this.pnlException.Name = "pnlException";
+            this.pnlException.Size = new System.Drawing.Size(201, 29);
+            this.pnlException.TabIndex = 16;
+            this.pnlException.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlException_Paint);
+            // 
+            // lblExcptn
+            // 
+            this.lblExcptn.AutoSize = true;
+            this.lblExcptn.Location = new System.Drawing.Point(6, 6);
+            this.lblExcptn.Name = "lblExcptn";
+            this.lblExcptn.Size = new System.Drawing.Size(116, 17);
+            this.lblExcptn.TabIndex = 15;
+            this.lblExcptn.Text = "Throw Exception:";
+            // 
+            // chkExcptn
+            // 
+            this.chkExcptn.AutoSize = true;
+            this.chkExcptn.Location = new System.Drawing.Point(153, 6);
+            this.chkExcptn.Name = "chkExcptn";
+            this.chkExcptn.Size = new System.Drawing.Size(18, 17);
+            this.chkExcptn.TabIndex = 14;
+            this.chkExcptn.UseVisualStyleBackColor = true;
+            this.chkExcptn.CheckedChanged += new System.EventHandler(this.chkExcptn_CheckedChanged);
+            // 
             // pnlPortPier
             // 
             this.pnlPortPier.Controls.Add(this.txtPier);
@@ -357,15 +386,6 @@
             this.lblPort.TabIndex = 9;
             this.lblPort.Text = "Port:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(372, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 17);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Check Conversion";
-            // 
             // pnlLinecode
             // 
             this.pnlLinecode.Controls.Add(this.lblLinecodeHelp);
@@ -414,6 +434,15 @@
             this.lblInput1.TabIndex = 9;
             this.lblInput1.Text = "Linecode:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(372, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 17);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Check Conversion";
+            // 
             // lblResult
             // 
             this.lblResult.AutoSize = true;
@@ -432,35 +461,6 @@
             this.lblSelectionHelp.Size = new System.Drawing.Size(155, 17);
             this.lblSelectionHelp.TabIndex = 10;
             this.lblSelectionHelp.Text = "Select conversion type:";
-            // 
-            // chkExcptn
-            // 
-            this.chkExcptn.AutoSize = true;
-            this.chkExcptn.Location = new System.Drawing.Point(153, 6);
-            this.chkExcptn.Name = "chkExcptn";
-            this.chkExcptn.Size = new System.Drawing.Size(18, 17);
-            this.chkExcptn.TabIndex = 14;
-            this.chkExcptn.UseVisualStyleBackColor = true;
-            this.chkExcptn.CheckedChanged += new System.EventHandler(this.chkExcptn_CheckedChanged);
-            // 
-            // lblExcptn
-            // 
-            this.lblExcptn.AutoSize = true;
-            this.lblExcptn.Location = new System.Drawing.Point(6, 6);
-            this.lblExcptn.Name = "lblExcptn";
-            this.lblExcptn.Size = new System.Drawing.Size(116, 17);
-            this.lblExcptn.TabIndex = 15;
-            this.lblExcptn.Text = "Throw Exception:";
-            // 
-            // pnlException
-            // 
-            this.pnlException.Controls.Add(this.lblExcptn);
-            this.pnlException.Controls.Add(this.chkExcptn);
-            this.pnlException.Location = new System.Drawing.Point(3, 138);
-            this.pnlException.Name = "pnlException";
-            this.pnlException.Size = new System.Drawing.Size(201, 29);
-            this.pnlException.TabIndex = 16;
-            this.pnlException.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlException_Paint);
             // 
             // gBoxMain
             // 
@@ -497,12 +497,12 @@
             this.pnlSubmit.ResumeLayout(false);
             this.pnlSubmit.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.pnlException.ResumeLayout(false);
+            this.pnlException.PerformLayout();
             this.pnlPortPier.ResumeLayout(false);
             this.pnlPortPier.PerformLayout();
             this.pnlLinecode.ResumeLayout(false);
             this.pnlLinecode.PerformLayout();
-            this.pnlException.ResumeLayout(false);
-            this.pnlException.PerformLayout();
             this.gBoxMain.ResumeLayout(false);
             this.gBoxMain.PerformLayout();
             this.ResumeLayout(false);
@@ -518,7 +518,6 @@
         private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.ListBox OutputBox;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button btnGoTable;
         private System.Windows.Forms.ComboBox boxSlctType;
         private System.Windows.Forms.TextBox txtListId;
         private System.Windows.Forms.TextBox txtLinecode;
@@ -552,5 +551,6 @@
         private System.Windows.Forms.CheckBox chkExcptn;
         private System.Windows.Forms.Panel pnlException;
         private System.Windows.Forms.GroupBox gBoxMain;
+        private System.Windows.Forms.Button btnGoTable;
     }
 }

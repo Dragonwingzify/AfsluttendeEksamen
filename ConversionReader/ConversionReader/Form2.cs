@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static ConversionReader.MainWindow;
 
 namespace ConversionReader
 {
@@ -22,7 +22,7 @@ namespace ConversionReader
         public bool ToThrow { get; set; }
         public string Output { get; set; }
         Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
+        
         /*  panel2 is the interface for linecode/port&pier input boxes */
 
         public Form2()
@@ -31,7 +31,7 @@ namespace ConversionReader
             InitializeComponent();
 
             panel2.Visible = false;
-
+            btnGoTable.Enabled = true;
             //Set location values
             x = pnlLinecode.Location.X;
             y = pnlLinecode.Location.Y;
@@ -50,11 +50,15 @@ namespace ConversionReader
                 form.ShowDialog();
         }
 
+
         private void btnGoTable_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            var form3 = new Form3();
+            var form3 = new Form3(this);
             form3.Show();
+            btnGoTable.Enabled = false;
+            switchForm = true;
+
         }
 
         private void pnlWriteCnvrt_Paint(object sender, PaintEventArgs e)
@@ -205,5 +209,11 @@ namespace ConversionReader
         {
 
         }
+
+        public void EnableTableAgain()
+        {
+            btnGoTable.Enabled = true;
+        }
+        
     }
 }
