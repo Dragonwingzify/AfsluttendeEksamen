@@ -39,6 +39,23 @@
             this.boxSlctType = new System.Windows.Forms.ComboBox();
             this.txtListId = new System.Windows.Forms.TextBox();
             this.pnlSubmit = new System.Windows.Forms.GroupBox();
+            this.pnlEdit = new System.Windows.Forms.GroupBox();
+            this.btnGetFromId = new System.Windows.Forms.Button();
+            this.boxEditLId = new System.Windows.Forms.TextBox();
+            this.lblEditOutput = new System.Windows.Forms.Label();
+            this.lblEditInput2 = new System.Windows.Forms.Label();
+            this.lblEditInput1 = new System.Windows.Forms.Label();
+            this.lblEditLId = new System.Windows.Forms.Label();
+            this.boxEditOutput = new System.Windows.Forms.TextBox();
+            this.boxEditInput2 = new System.Windows.Forms.TextBox();
+            this.boxEditInput1 = new System.Windows.Forms.TextBox();
+            this.lblSelectId = new System.Windows.Forms.Label();
+            this.boxGetFromId = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.pnlDelete = new System.Windows.Forms.GroupBox();
+            this.lblSelctId = new System.Windows.Forms.Label();
+            this.boxSlctId = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.boxSbmLId = new System.Windows.Forms.TextBox();
             this.txtSbmOut = new System.Windows.Forms.Label();
             this.txtSbmIn2 = new System.Windows.Forms.Label();
@@ -71,6 +88,8 @@
             this.gBoxMain = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.pnlSubmit.SuspendLayout();
+            this.pnlEdit.SuspendLayout();
+            this.pnlDelete.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlException.SuspendLayout();
             this.pnlPortPier.SuspendLayout();
@@ -95,7 +114,7 @@
             this.groupBox1.Controls.Add(this.btnAddRow);
             this.groupBox1.Location = new System.Drawing.Point(26, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(158, 359);
+            this.groupBox1.Size = new System.Drawing.Size(158, 369);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation";
@@ -108,6 +127,7 @@
             this.btnEditRow.TabIndex = 3;
             this.btnEditRow.Text = "Edit Row";
             this.btnEditRow.UseVisualStyleBackColor = true;
+            this.btnEditRow.Click += new System.EventHandler(this.btnEditRow_Click);
             // 
             // btnDelRow
             // 
@@ -117,6 +137,7 @@
             this.btnDelRow.TabIndex = 2;
             this.btnDelRow.Text = "Delete Row";
             this.btnDelRow.UseVisualStyleBackColor = true;
+            this.btnDelRow.Click += new System.EventHandler(this.btnDelRow_Click);
             // 
             // btnAddRow
             // 
@@ -189,17 +210,185 @@
             this.pnlSubmit.Controls.Add(this.boxSbmIn2);
             this.pnlSubmit.Controls.Add(this.boxSbmIn1);
             this.pnlSubmit.Controls.Add(this.btnSbmSubmit);
+            this.pnlSubmit.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlSubmit.Location = new System.Drawing.Point(190, 282);
             this.pnlSubmit.Name = "pnlSubmit";
-            this.pnlSubmit.Size = new System.Drawing.Size(535, 100);
+            this.pnlSubmit.Size = new System.Drawing.Size(535, 110);
             this.pnlSubmit.TabIndex = 14;
             this.pnlSubmit.TabStop = false;
             this.pnlSubmit.Text = "Submit to table";
             this.pnlSubmit.Enter += new System.EventHandler(this.pnlSubmit_Enter);
             // 
+            // pnlEdit
+            // 
+            this.pnlEdit.Controls.Add(this.btnGetFromId);
+            this.pnlEdit.Controls.Add(this.boxEditLId);
+            this.pnlEdit.Controls.Add(this.lblEditOutput);
+            this.pnlEdit.Controls.Add(this.lblEditInput2);
+            this.pnlEdit.Controls.Add(this.lblEditInput1);
+            this.pnlEdit.Controls.Add(this.lblEditLId);
+            this.pnlEdit.Controls.Add(this.boxEditOutput);
+            this.pnlEdit.Controls.Add(this.boxEditInput2);
+            this.pnlEdit.Controls.Add(this.boxEditInput1);
+            this.pnlEdit.Controls.Add(this.lblSelectId);
+            this.pnlEdit.Controls.Add(this.boxGetFromId);
+            this.pnlEdit.Controls.Add(this.btnEdit);
+            this.pnlEdit.Location = new System.Drawing.Point(754, 166);
+            this.pnlEdit.Name = "pnlEdit";
+            this.pnlEdit.Size = new System.Drawing.Size(535, 110);
+            this.pnlEdit.TabIndex = 16;
+            this.pnlEdit.TabStop = false;
+            this.pnlEdit.Text = "Edit row in table";
+            this.pnlEdit.Visible = false;
+            // 
+            // btnGetFromId
+            // 
+            this.btnGetFromId.Location = new System.Drawing.Point(211, 20);
+            this.btnGetFromId.Name = "btnGetFromId";
+            this.btnGetFromId.Size = new System.Drawing.Size(44, 23);
+            this.btnGetFromId.TabIndex = 19;
+            this.btnGetFromId.Text = "Get";
+            this.btnGetFromId.UseVisualStyleBackColor = true;
+            this.btnGetFromId.Click += new System.EventHandler(this.btnGetFromId_Click);
+            // 
+            // boxEditLId
+            // 
+            this.boxEditLId.Location = new System.Drawing.Point(6, 78);
+            this.boxEditLId.Name = "boxEditLId";
+            this.boxEditLId.Size = new System.Drawing.Size(91, 22);
+            this.boxEditLId.TabIndex = 18;
+            this.boxEditLId.TextChanged += new System.EventHandler(this.boxEditLId_TextChanged);
+            // 
+            // lblEditOutput
+            // 
+            this.lblEditOutput.AutoSize = true;
+            this.lblEditOutput.Location = new System.Drawing.Point(294, 58);
+            this.lblEditOutput.Name = "lblEditOutput";
+            this.lblEditOutput.Size = new System.Drawing.Size(51, 17);
+            this.lblEditOutput.TabIndex = 17;
+            this.lblEditOutput.Text = "Output";
+            // 
+            // lblEditInput2
+            // 
+            this.lblEditInput2.AutoSize = true;
+            this.lblEditInput2.Location = new System.Drawing.Point(197, 58);
+            this.lblEditInput2.Name = "lblEditInput2";
+            this.lblEditInput2.Size = new System.Drawing.Size(47, 17);
+            this.lblEditInput2.TabIndex = 16;
+            this.lblEditInput2.Text = "Input2";
+            // 
+            // lblEditInput1
+            // 
+            this.lblEditInput1.AutoSize = true;
+            this.lblEditInput1.Location = new System.Drawing.Point(100, 58);
+            this.lblEditInput1.Name = "lblEditInput1";
+            this.lblEditInput1.Size = new System.Drawing.Size(47, 17);
+            this.lblEditInput1.TabIndex = 15;
+            this.lblEditInput1.Text = "Input1";
+            // 
+            // lblEditLId
+            // 
+            this.lblEditLId.AutoSize = true;
+            this.lblEditLId.Location = new System.Drawing.Point(6, 58);
+            this.lblEditLId.Name = "lblEditLId";
+            this.lblEditLId.Size = new System.Drawing.Size(45, 17);
+            this.lblEditLId.TabIndex = 14;
+            this.lblEditLId.Text = "ListId:";
+            // 
+            // boxEditOutput
+            // 
+            this.boxEditOutput.Location = new System.Drawing.Point(297, 78);
+            this.boxEditOutput.Name = "boxEditOutput";
+            this.boxEditOutput.Size = new System.Drawing.Size(77, 22);
+            this.boxEditOutput.TabIndex = 13;
+            this.boxEditOutput.TextChanged += new System.EventHandler(this.boxEditOutput_TextChanged);
+            // 
+            // boxEditInput2
+            // 
+            this.boxEditInput2.Location = new System.Drawing.Point(200, 78);
+            this.boxEditInput2.Name = "boxEditInput2";
+            this.boxEditInput2.Size = new System.Drawing.Size(91, 22);
+            this.boxEditInput2.TabIndex = 12;
+            this.boxEditInput2.TextChanged += new System.EventHandler(this.boxEditInput2_TextChanged);
+            // 
+            // boxEditInput1
+            // 
+            this.boxEditInput1.Location = new System.Drawing.Point(103, 78);
+            this.boxEditInput1.Name = "boxEditInput1";
+            this.boxEditInput1.Size = new System.Drawing.Size(91, 22);
+            this.boxEditInput1.TabIndex = 11;
+            this.boxEditInput1.TextChanged += new System.EventHandler(this.boxEditInput1_TextChanged);
+            // 
+            // lblSelectId
+            // 
+            this.lblSelectId.AutoSize = true;
+            this.lblSelectId.Location = new System.Drawing.Point(83, 23);
+            this.lblSelectId.Name = "lblSelectId";
+            this.lblSelectId.Size = new System.Drawing.Size(68, 17);
+            this.lblSelectId.TabIndex = 9;
+            this.lblSelectId.Text = "Select ID:";
+            // 
+            // boxGetFromId
+            // 
+            this.boxGetFromId.Location = new System.Drawing.Point(157, 21);
+            this.boxGetFromId.Name = "boxGetFromId";
+            this.boxGetFromId.Size = new System.Drawing.Size(48, 22);
+            this.boxGetFromId.TabIndex = 4;
+            this.boxGetFromId.TextChanged += new System.EventHandler(this.boxGetFromId_TextChanged);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(403, 42);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(117, 52);
+            this.btnEdit.TabIndex = 0;
+            this.btnEdit.Text = "Edit and save";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // pnlDelete
+            // 
+            this.pnlDelete.Controls.Add(this.lblSelctId);
+            this.pnlDelete.Controls.Add(this.boxSlctId);
+            this.pnlDelete.Controls.Add(this.btnDelete);
+            this.pnlDelete.Location = new System.Drawing.Point(754, 43);
+            this.pnlDelete.Name = "pnlDelete";
+            this.pnlDelete.Size = new System.Drawing.Size(535, 110);
+            this.pnlDelete.TabIndex = 15;
+            this.pnlDelete.TabStop = false;
+            this.pnlDelete.Text = "Delete row from table";
+            this.pnlDelete.Visible = false;
+            // 
+            // lblSelctId
+            // 
+            this.lblSelctId.AutoSize = true;
+            this.lblSelctId.Location = new System.Drawing.Point(25, 25);
+            this.lblSelctId.Name = "lblSelctId";
+            this.lblSelctId.Size = new System.Drawing.Size(64, 17);
+            this.lblSelctId.TabIndex = 9;
+            this.lblSelctId.Text = "Select ID";
+            // 
+            // boxSlctId
+            // 
+            this.boxSlctId.Location = new System.Drawing.Point(16, 45);
+            this.boxSlctId.Name = "boxSlctId";
+            this.boxSlctId.Size = new System.Drawing.Size(81, 22);
+            this.boxSlctId.TabIndex = 4;
+            this.boxSlctId.TextChanged += new System.EventHandler(this.boxSlctId_TextChanged);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(403, 42);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(117, 52);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // boxSbmLId
             // 
-            this.boxSbmLId.Location = new System.Drawing.Point(3, 43);
+            this.boxSbmLId.Location = new System.Drawing.Point(6, 43);
             this.boxSbmLId.Name = "boxSbmLId";
             this.boxSbmLId.Size = new System.Drawing.Size(91, 22);
             this.boxSbmLId.TabIndex = 10;
@@ -487,6 +676,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlEdit);
+            this.Controls.Add(this.pnlDelete);
             this.Controls.Add(this.gBoxMain);
             this.Controls.Add(this.pnlSubmit);
             this.Controls.Add(this.btnGoTable);
@@ -499,6 +690,10 @@
             this.groupBox1.ResumeLayout(false);
             this.pnlSubmit.ResumeLayout(false);
             this.pnlSubmit.PerformLayout();
+            this.pnlEdit.ResumeLayout(false);
+            this.pnlEdit.PerformLayout();
+            this.pnlDelete.ResumeLayout(false);
+            this.pnlDelete.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.pnlException.ResumeLayout(false);
             this.pnlException.PerformLayout();
@@ -555,5 +750,22 @@
         private System.Windows.Forms.CheckBox chkExcptn;
         private System.Windows.Forms.Panel pnlException;
         private System.Windows.Forms.GroupBox gBoxMain;
+        private System.Windows.Forms.GroupBox pnlDelete;
+        private System.Windows.Forms.Label lblSelctId;
+        private System.Windows.Forms.TextBox boxSlctId;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox pnlEdit;
+        private System.Windows.Forms.Button btnGetFromId;
+        private System.Windows.Forms.TextBox boxEditLId;
+        private System.Windows.Forms.Label lblEditOutput;
+        private System.Windows.Forms.Label lblEditInput2;
+        private System.Windows.Forms.Label lblEditInput1;
+        private System.Windows.Forms.Label lblEditLId;
+        private System.Windows.Forms.TextBox boxEditOutput;
+        private System.Windows.Forms.TextBox boxEditInput2;
+        private System.Windows.Forms.TextBox boxEditInput1;
+        private System.Windows.Forms.Label lblSelectId;
+        private System.Windows.Forms.TextBox boxGetFromId;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

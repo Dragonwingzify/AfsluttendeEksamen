@@ -21,6 +21,7 @@ namespace ConversionReader
         public string Input2 { get; set; }
         public bool ToThrow { get; set; }
         public string Output { get; set; }
+        public string Id { get; set; }
 
         Handler handler = MainWindow.Handler; //shorthand variable
 
@@ -37,6 +38,8 @@ namespace ConversionReader
             //Set location values
             x = pnlLinecode.Location.X;
             y = pnlLinecode.Location.Y;
+
+            Point Location = new Point(190,288);
         }
 
         private void btnRtrnMain_Click(object sender, EventArgs e)
@@ -168,6 +171,9 @@ namespace ConversionReader
 
         private void btnAddRow_Click(object sender, EventArgs e)
         {
+            pnlEdit.Visible = false;
+            pnlDelete.Visible = false;
+
             pnlSubmit.Visible = true;
         }
 
@@ -238,6 +244,69 @@ namespace ConversionReader
         private void boxSbmIn2_TextChanged(object sender, EventArgs e)
         {
             Input2 = boxSbmIn2.Text;
+        }
+
+        private void boxSlctId_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            handler.DeleteRow(boxSlctId.Text);
+        }
+
+        private void btnDelRow_Click(object sender, EventArgs e)
+        {
+            pnlDelete.Location = pnlSubmit.Location; //align location
+            pnlSubmit.Visible = false; //close Add Row GroupBox
+            pnlEdit.Visible = false; //close Edit Row GroupBox
+
+            pnlDelete.Visible = true;
+        }
+
+        private void boxGetFromId_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void btnGetFromId_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int type = 1;
+            if (boxEditInput2.Text == null)
+                type = 1;
+            else
+                type = 2;
+
+            handler.UpdateRow(boxGetFromId.Text, boxEditLId.Text, boxEditInput1.Text, boxEditInput2.Text, boxEditOutput.Text, type);
+        }
+
+        private void boxEditLId_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void boxEditInput1_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void boxEditInput2_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void boxEditOutput_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void btnEditRow_Click(object sender, EventArgs e)
+        {
+            pnlDelete.Visible = false;
+            pnlSubmit.Visible = false;
+
+            pnlEdit.Location = pnlSubmit.Location;
+            pnlEdit.Visible = true;
         }
     }
 }
