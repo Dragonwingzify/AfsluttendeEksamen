@@ -15,10 +15,9 @@ namespace ConversionReader
         
         static void Main(string[] args)
         {
-            handler.GetFromLineCode("DEFAULT", "1370", true);
-
+            //handler.GetFromLineCode("DEFAULT", "1370", true);
             handler.GetFromPortAndPier("MISK", "DKAAR", "FCT", false);
-       
+
             MainWindow form1 = new MainWindow();
             Application.Run(form1);
             

@@ -54,7 +54,7 @@
             this.chkExcptn = new System.Windows.Forms.CheckBox();
             this.pnlPortPier = new System.Windows.Forms.Panel();
             this.txtPier = new System.Windows.Forms.TextBox();
-            this.Pier = new System.Windows.Forms.Label();
+            this.lblPier = new System.Windows.Forms.Label();
             this.lblPortPierHelp = new System.Windows.Forms.Label();
             this.lblListId_Ex = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
@@ -172,7 +172,7 @@
             // 
             // txtListId
             // 
-            this.txtListId.Location = new System.Drawing.Point(111, 60);
+            this.txtListId.Location = new System.Drawing.Point(108, 32);
             this.txtListId.Name = "txtListId";
             this.txtListId.Size = new System.Drawing.Size(87, 22);
             this.txtListId.TabIndex = 6;
@@ -255,6 +255,7 @@
             this.boxSbmIn2.Name = "boxSbmIn2";
             this.boxSbmIn2.Size = new System.Drawing.Size(91, 22);
             this.boxSbmIn2.TabIndex = 3;
+            this.boxSbmIn2.TextChanged += new System.EventHandler(this.boxSbmIn2_TextChanged);
             // 
             // boxSbmIn1
             // 
@@ -262,6 +263,7 @@
             this.boxSbmIn1.Name = "boxSbmIn1";
             this.boxSbmIn1.Size = new System.Drawing.Size(91, 22);
             this.boxSbmIn1.TabIndex = 2;
+            this.boxSbmIn1.TextChanged += new System.EventHandler(this.boxSbmIn1_TextChanged);
             // 
             // btnSbmSubmit
             // 
@@ -271,6 +273,7 @@
             this.btnSbmSubmit.TabIndex = 0;
             this.btnSbmSubmit.Text = "Submit";
             this.btnSbmSubmit.UseVisualStyleBackColor = true;
+            this.btnSbmSubmit.Click += new System.EventHandler(this.btnSbmSubmit_Click);
             // 
             // panel2
             // 
@@ -315,7 +318,7 @@
             // pnlPortPier
             // 
             this.pnlPortPier.Controls.Add(this.txtPier);
-            this.pnlPortPier.Controls.Add(this.Pier);
+            this.pnlPortPier.Controls.Add(this.lblPier);
             this.pnlPortPier.Controls.Add(this.lblPortPierHelp);
             this.pnlPortPier.Controls.Add(this.lblListId_Ex);
             this.pnlPortPier.Controls.Add(this.txtPort);
@@ -334,14 +337,14 @@
             this.txtPier.TabIndex = 11;
             this.txtPier.TextChanged += new System.EventHandler(this.txtPier_TextChanged);
             // 
-            // Pier
+            // lblPier
             // 
-            this.Pier.AutoSize = true;
-            this.Pier.Location = new System.Drawing.Point(4, 88);
-            this.Pier.Name = "Pier";
-            this.Pier.Size = new System.Drawing.Size(37, 17);
-            this.Pier.TabIndex = 10;
-            this.Pier.Text = "Pier:";
+            this.lblPier.AutoSize = true;
+            this.lblPier.Location = new System.Drawing.Point(4, 88);
+            this.lblPier.Name = "lblPier";
+            this.lblPier.Size = new System.Drawing.Size(37, 17);
+            this.lblPier.TabIndex = 10;
+            this.lblPier.Text = "Pier:";
             // 
             // lblPortPierHelp
             // 
@@ -419,7 +422,7 @@
             // 
             // txtLinecode
             // 
-            this.txtLinecode.Location = new System.Drawing.Point(111, 32);
+            this.txtLinecode.Location = new System.Drawing.Point(108, 58);
             this.txtLinecode.Name = "txtLinecode";
             this.txtLinecode.Size = new System.Drawing.Size(87, 22);
             this.txtLinecode.TabIndex = 7;
@@ -535,7 +538,7 @@
         private System.Windows.Forms.TextBox txtListId_Ex;
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.TextBox txtPier;
-        private System.Windows.Forms.Label Pier;
+        private System.Windows.Forms.Label lblPier;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox pnlSubmit;
         private System.Windows.Forms.Label txtSbmOut;

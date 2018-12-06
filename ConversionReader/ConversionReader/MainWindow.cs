@@ -13,6 +13,19 @@ namespace ConversionReader
     public partial class MainWindow : Form
     {
         public static bool switchForm;
+        //Singleton Handler. Can be used across all forms.
+        private static Handler handler;
+        public static Handler Handler
+        {
+            get
+            {
+                if (handler == null)
+                {
+                    handler = new Handler("Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+                }
+                return handler;
+            }
+        }
         public enum SwitchForms
         {
             showConvert,
@@ -29,6 +42,11 @@ namespace ConversionReader
 
         /* When we press the convert button, the foreach loop is closing everything except MainWindow, but at the same time
         it closes everything we hide the MainWindow by using the "this.Hide()", which in the end opens form2 */
+        /// <summary>
+        /// Look here, you two
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Converts_Click(object sender, EventArgs e)
         {
             // when pressing the Convert button, all other forms is closed except MainWindow
@@ -48,12 +66,13 @@ namespace ConversionReader
 
             }
 
+
         }
 
         private void Table_Click(object sender, EventArgs e)
         {
             MainWindow.SwitchForms tableForm = SwitchForms.showTable;
-            if(tableForm == SwitchForms.showTable)
+            if (tableForm == SwitchForms.showTable)
             {
                 switchForm = false;
                 var form3 = new Form3(this);
@@ -61,7 +80,7 @@ namespace ConversionReader
                 Table.Enabled = false;
             }
 
-            
+
         }
 
         private void Exit_Click(object sender, EventArgs e)

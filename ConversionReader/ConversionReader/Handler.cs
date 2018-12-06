@@ -116,5 +116,111 @@ namespace ConversionReader
             Console.WriteLine("Output is: {0}", output);
             return output;
         }
+
+        public void SetRow(string listID, string input1, string input2, string output, int type)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+
+                {
+                    sqlCommand = new SqlCommand("dbo.SetPartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@ListId"].Value = listID;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Input1"].Value = input1;
+                    if (input2 == "NULL")
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = input2;
+                    }
+                    sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Output"].Value = output;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
+                    sqlCommand.Parameters["@Type"].Value = type;
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Row has been added");
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Row Has Not Been Added");
+            }
+
+        }
+
+        public void UpdateRow(string currentId, string listID, string input1, string input2, string output, int type)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+
+                {
+                    sqlCommand = new SqlCommand("dbo.UpdatePartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
+                    sqlCommand.Parameters["@CurrentId"].Value = currentId;
+                    sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@ListId"].Value = listID;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Input1"].Value = input1;
+                    if (input2 == "NULL")
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = input2;
+                    }
+                    sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Output"].Value = output;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
+                    sqlCommand.Parameters["@Type"].Value = type;
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Row has been Updated");
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Row Has Not Been Updated");
+            }
+
+        }
+
+        public void DeleteRow(string currentId)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(connectionstring))
+
+                {
+                    sqlCommand = new SqlCommand("dbo.DeletePartner", conn);
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
+                    sqlCommand.Parameters["@CurrentId"].Value = currentId;
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    Console.WriteLine("Row has been Deleted");
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Row Has Not Been Deleted");
+            }
+
+        }
     }
 }
