@@ -117,7 +117,7 @@ namespace ConversionReader
             return output;
         }
 
-        public void SetRow(string listID, string port, string pier, string output, int type, bool ToThrow)
+        public void SetRow(string listID, string input1, string input2, string output, int type)
         {
             try
             {
@@ -128,30 +128,36 @@ namespace ConversionReader
                     sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
                     sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Port"].Value = port;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Pier"].Value = pier;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Input1"].Value = input1;
+                    if (input2 == "NULL")
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = input2;
+                    }
                     sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
                     sqlCommand.Parameters["@Output"].Value = output;
                     sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
                     sqlCommand.Parameters["@Type"].Value = type;
                     conn.Open();
                     sqlCommand.ExecuteNonQuery();
-                    conn.Dispose();
                     Console.WriteLine("Row has been added");
+                    conn.Dispose();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Row Has Not Been Added");
-                if (ToThrow)
-                    throw (ex);
             }
 
         }
 
-        public void UpdateRow(string currentId, string listID, string port, string pier, string output, int type)
+        public void UpdateRow(string currentId, string listID, string input1, string input2, string output, int type)
         {
             try
             {
@@ -164,15 +170,24 @@ namespace ConversionReader
                     sqlCommand.Parameters["@CurrentId"].Value = currentId;
                     sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
                     sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Port"].Value = port;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Pier"].Value = pier;
+                    sqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
+                    sqlCommand.Parameters["@Input1"].Value = input1;
+                    if (input2 == "NULL")
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        sqlCommand.Parameters["@Input2"].Value = input2;
+                    }
                     sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
                     sqlCommand.Parameters["@Output"].Value = output;
                     sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
                     sqlCommand.Parameters["@Type"].Value = type;
                     conn.Open();
+                    sqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Row has been Updated");
                     conn.Dispose();
                 }
@@ -184,7 +199,7 @@ namespace ConversionReader
 
         }
 
-        public void DeleteRow(string currentId, string listID, string port, string pier, string output, int type)
+        public void DeleteRow(string currentId)
         {
             try
             {
@@ -196,6 +211,7 @@ namespace ConversionReader
                     sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
                     sqlCommand.Parameters["@CurrentId"].Value = currentId;
                     conn.Open();
+                    sqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Row has been Deleted");
                     conn.Dispose();
                 }

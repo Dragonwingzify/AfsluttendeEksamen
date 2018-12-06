@@ -227,7 +227,7 @@ namespace ConversionReader
             if (Input2 != null)
                 type = 2;
 
-                handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
+                handler.SetRow(ListId, Input1, Input2, Output, type);
         }
 
         private void boxSbmIn1_TextChanged(object sender, EventArgs e)
