@@ -9,41 +9,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ConversionReader.MainWindow;
-
+using static ConversionReader.Form2;
 
 namespace ConversionReader
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        private Form2 frm2;
+        private MainWindow mainWindow;
+
+        public Form3(Form2 frm)
+        {
+
+            StartPosition = FormStartPosition.CenterScreen;
+            InitializeComponent();
+            this.frm2 = frm;
+            LoadTable();
+        }
+
+        public Form3(MainWindow mainWindow)
         {
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+            this.mainWindow = mainWindow;
             LoadTable();
         }
-       
-       
+
         private void BackButton_Click(object sender, EventArgs e)
         {
-
+            /* Create a back button that can go back to MainWindow or back to Form2. When you are closing the table,
+               depending on what button you have clicked to acces the table, you should be able to acces the table button again*/
             if ( switchForm != true)
             {
                 switchForm = true;
                 this.Hide();
-                //MainWindow mainForm = new MainWindow();
-                //mainForm.ShowDialog();
+                this.Close();
+                mainWindow.EnableTableClick();
+
             }
             else
             {
                 switchForm = false;
                 this.Hide();
-                //Form2 form2 = new Form2();
-                //form2.ShowDialog();
+                frm2.EnableTableAgain();
+                this.Close();
             }
             
 
         }
-
+        // Make a DataTable that can show our Database information and be able to see it in a Form window.
         public void LoadTable()
         {
             string constring = "Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";

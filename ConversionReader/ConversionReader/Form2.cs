@@ -55,10 +55,15 @@ namespace ConversionReader
                 form.ShowDialog();
         }
 
+        internal void EnableTableAgain()
+        {
+            btnGoTable.Enabled = true;
+        }
+
         private void btnGoTable_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            var form3 = new Form3();
+            var form3 = new Form3(this);
             form3.Show();
         }
 
