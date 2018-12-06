@@ -31,6 +31,8 @@ namespace ConversionReader
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             panel2.Visible = false;
+            pnlSubmit.Visible = false;
+            ToThrow = false;
 
             //Set location values
             x = pnlLinecode.Location.X;
@@ -75,12 +77,22 @@ namespace ConversionReader
                 case 0:
                     OutputBox.Text = handler.GetFromLineCode(ListId, Input1, ToThrow);
                     if (OutputBox.Text != null)
+                    {
                         boxSbmOut.Text = OutputBox.Text;
+                        boxSbmLId.Text = txtListId.Text;
+                        boxSbmIn1.Text = txtLinecode.Text;
+                    }
+                       
                     break;
                 case 1:
                     OutputBox.Text = handler.GetFromPortAndPier(ListId, Input1, Input2, ToThrow);
                     if (OutputBox.Text != null)
+                    {
                         boxSbmOut.Text = OutputBox.Text;
+                        boxSbmLId.Text = txtListId_Ex.Text;
+                        boxSbmIn1.Text = txtPort.Text;
+                        boxSbmIn2.Text = txtPier.Text;
+                    }
                     break;
             }
         }
@@ -161,7 +173,7 @@ namespace ConversionReader
 
         private void boxSbmLId_TextChanged(object sender, EventArgs e)
         {
-
+            ListId = boxSbmLId.Text;
         }
 
         private void OutputBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -204,7 +216,28 @@ namespace ConversionReader
 
         private void boxSbmOut_TextChanged(object sender, EventArgs e)
         {
-            
+            Output = boxSbmOut.Text;
+        }
+
+        private void btnSbmSubmit_Click(object sender, EventArgs e)
+        {
+            int type = 0;
+            if (boxSlctType.SelectedIndex == 1)
+                type = 0;
+            if (Input2 != null)
+                type = 1;
+
+                handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
+        }
+
+        private void boxSbmIn1_TextChanged(object sender, EventArgs e)
+        {
+            Input1 = boxSbmIn1.Text;
+        }
+
+        private void boxSbmIn2_TextChanged(object sender, EventArgs e)
+        {
+            Input2 = boxSbmIn2.Text;
         }
     }
 }

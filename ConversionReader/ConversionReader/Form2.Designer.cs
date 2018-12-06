@@ -255,6 +255,7 @@
             this.boxSbmIn2.Name = "boxSbmIn2";
             this.boxSbmIn2.Size = new System.Drawing.Size(91, 22);
             this.boxSbmIn2.TabIndex = 3;
+            this.boxSbmIn2.TextChanged += new System.EventHandler(this.boxSbmIn2_TextChanged);
             // 
             // boxSbmIn1
             // 
@@ -262,6 +263,7 @@
             this.boxSbmIn1.Name = "boxSbmIn1";
             this.boxSbmIn1.Size = new System.Drawing.Size(91, 22);
             this.boxSbmIn1.TabIndex = 2;
+            this.boxSbmIn1.TextChanged += new System.EventHandler(this.boxSbmIn1_TextChanged);
             // 
             // btnSbmSubmit
             // 
@@ -271,6 +273,7 @@
             this.btnSbmSubmit.TabIndex = 0;
             this.btnSbmSubmit.Text = "Submit";
             this.btnSbmSubmit.UseVisualStyleBackColor = true;
+            this.btnSbmSubmit.Click += new System.EventHandler(this.btnSbmSubmit_Click);
             // 
             // panel2
             // 
