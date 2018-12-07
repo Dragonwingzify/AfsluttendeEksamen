@@ -11,7 +11,7 @@ namespace ConversionReader
     class Program
     {
         
-        static Handler handler = new Handler("Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+        static Handler handler = new Handler("Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
         
         static void Main(string[] args)
         {

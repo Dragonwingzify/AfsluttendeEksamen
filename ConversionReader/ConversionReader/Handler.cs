@@ -17,7 +17,7 @@ namespace ConversionReader
         //Fields: SQL Data object which references the ConversionReader table
 
         SqlCommand sqlCommand;
-        string connectionstring = @"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
+        string connectionstring = @"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
         public string sql;
         string cmdSqlGet;
 

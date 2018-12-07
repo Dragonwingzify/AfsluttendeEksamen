@@ -62,7 +62,7 @@ namespace ConversionReader
         // Make a DataTable that can show our Database information and be able to see it in a Form window.
         public void LoadTable()
         {
-            string constring = "Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
+            string constring = "Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
             SqlConnection conDataBase = new SqlConnection(constring);
             SqlCommand cmdDataBase = new SqlCommand(" SELECT * FROM convert_platform ; ", conDataBase);
 

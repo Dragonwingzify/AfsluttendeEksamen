@@ -10,7 +10,7 @@ namespace TestHandler
         [TestMethod]
         public void GetFromLineCodeTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
             string output = handler.GetFromLineCode("DEFAULT", "1370", true);
             Assert.AreEqual("APL", output);
@@ -19,7 +19,7 @@ namespace TestHandler
         [TestMethod]
         public void GetFromLineCodeEmptyTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
             string output = handler.GetFromLineCode("DEFAULT", "3332", true);
             Assert.AreEqual("", output);
@@ -28,7 +28,7 @@ namespace TestHandler
         [TestMethod]
         public void GetFromLineCodeSecondSearchTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
             string output = handler.GetFromLineCode("DEHAM", "4000", true);
             Assert.AreEqual("HMM", output);
@@ -37,7 +37,7 @@ namespace TestHandler
         [TestMethod]
         public void GetFromPortAndPierTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
             string output = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCT", false);
             Assert.AreEqual("DKFCT", output);
@@ -46,7 +46,7 @@ namespace TestHandler
         [TestMethod]
         public void GetFromPortAndPierSecondTryTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
             string output = handler.GetFromPortAndPier("CMA", "DKAAR", "FCT", false);
             Assert.AreEqual("DKFCT", output);
@@ -55,7 +55,7 @@ namespace TestHandler
         [TestMethod]
         public void GetFromPortAndPierEmptyTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
             string output = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCR", false);
             Assert.AreEqual("", output);
@@ -64,8 +64,8 @@ namespace TestHandler
         [TestMethod]
         public void SetNewOutputTest()
         {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-engine.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-            handler.SetRow("DEFAULT", "0001", "NULL", "TEST", "1");
+            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
+            handler.SetRow("DEFAULT", "0001", "NULL", "TEST", 1);
             string output = handler.GetFromLineCode("DEFAULT", "0001", false);
             Assert.AreEqual("TEST", output);
         }
