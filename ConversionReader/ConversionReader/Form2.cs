@@ -237,7 +237,7 @@ namespace ConversionReader
             if (Input2 != null)
                 type = 2;
 
-                handler.SetRow(ListId, Input1, Input2, Output, type);
+                handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
         }
 
         private void boxSbmIn1_TextChanged(object sender, EventArgs e)
@@ -256,7 +256,7 @@ namespace ConversionReader
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            handler.DeleteRow(boxSlctId.Text);
+            handler.DeleteRow(boxSlctId.Text, ToThrow);
         }
 
         private void btnDelRow_Click(object sender, EventArgs e)
@@ -285,7 +285,7 @@ namespace ConversionReader
             else
                 type = 2;
 
-            handler.UpdateRow(boxGetFromId.Text, boxEditLId.Text, boxEditInput1.Text, boxEditInput2.Text, boxEditOutput.Text, type);
+            handler.UpdateRow(boxGetFromId.Text, boxEditLId.Text, boxEditInput1.Text, boxEditInput2.Text, boxEditOutput.Text, type, ToThrow);
         }
 
         private void boxEditLId_TextChanged(object sender, EventArgs e)

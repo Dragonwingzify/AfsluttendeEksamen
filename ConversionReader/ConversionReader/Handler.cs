@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 enum SQL
 {
@@ -72,7 +73,8 @@ namespace ConversionReader
             {
                 if (toThrow == true)
                 {
-                    throw ex;
+                    MessageBox.Show(ex.ToString());
+                    //throw ex;
                 }
 
             }
@@ -110,14 +112,14 @@ namespace ConversionReader
             {
                 if (toThrow == true)
                 {
-                    throw ex;
+                    MessageBox.Show(ex.ToString());
                 }
             }
             Console.WriteLine("Output is: {0}", output);
             return output;
         }
 
-        public void SetRow(string listID, string input1, string input2, string output, int type)
+        public void SetRow(string listID, string input1, string input2, string output, int type, bool toThrow)
         {
             try
             {
@@ -152,12 +154,16 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
+                if (toThrow == true)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
                 Console.WriteLine("Row Has Not Been Added");
             }
 
         }
 
-        public void UpdateRow(string currentId, string listID, string input1, string input2, string output, int type)
+        public void UpdateRow(string currentId, string listID, string input1, string input2, string output, int type, bool toThrow)
         {
             try
             {
@@ -194,12 +200,16 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
+                if (toThrow == true)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
                 Console.WriteLine("Row Has Not Been Updated");
             }
 
         }
 
-        public void DeleteRow(string currentId)
+        public void DeleteRow(string currentId, bool toThrow)
         {
             try
             {
@@ -218,6 +228,11 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
+                if (toThrow == true)
+                {
+                    MessageBox.Show(ex.ToString());
+                    throw ex;
+                }
                 Console.WriteLine("Row Has Not Been Deleted");
             }
 
