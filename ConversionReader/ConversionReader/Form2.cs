@@ -32,7 +32,7 @@ namespace ConversionReader
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             panel2.Visible = false;
-            pnlSubmit.Visible = false;
+            pnlSubmit.Visible = true;
             btnGoTable.Enabled = true;
             ToThrow = false;
 
@@ -188,7 +188,7 @@ namespace ConversionReader
 
         private void OutputBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void chkExcptn_CheckedChanged(object sender, EventArgs e)

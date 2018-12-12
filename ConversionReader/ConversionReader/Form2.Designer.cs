@@ -33,12 +33,20 @@
             this.btnEditRow = new System.Windows.Forms.Button();
             this.btnDelRow = new System.Windows.Forms.Button();
             this.btnAddRow = new System.Windows.Forms.Button();
-            this.OutputBox = new System.Windows.Forms.ListBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnGoTable = new System.Windows.Forms.Button();
             this.boxSlctType = new System.Windows.Forms.ComboBox();
             this.txtListId = new System.Windows.Forms.TextBox();
             this.pnlSubmit = new System.Windows.Forms.GroupBox();
+            this.boxSbmLId = new System.Windows.Forms.TextBox();
+            this.txtSbmOut = new System.Windows.Forms.Label();
+            this.txtSbmIn2 = new System.Windows.Forms.Label();
+            this.txtSbmIn1 = new System.Windows.Forms.Label();
+            this.txtSbmLId = new System.Windows.Forms.Label();
+            this.boxSbmOut = new System.Windows.Forms.TextBox();
+            this.boxSbmIn2 = new System.Windows.Forms.TextBox();
+            this.boxSbmIn1 = new System.Windows.Forms.TextBox();
+            this.btnSbmSubmit = new System.Windows.Forms.Button();
             this.pnlEdit = new System.Windows.Forms.GroupBox();
             this.btnGetFromId = new System.Windows.Forms.Button();
             this.boxEditLId = new System.Windows.Forms.TextBox();
@@ -56,15 +64,6 @@
             this.lblSelctId = new System.Windows.Forms.Label();
             this.boxSlctId = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.boxSbmLId = new System.Windows.Forms.TextBox();
-            this.txtSbmOut = new System.Windows.Forms.Label();
-            this.txtSbmIn2 = new System.Windows.Forms.Label();
-            this.txtSbmIn1 = new System.Windows.Forms.Label();
-            this.txtSbmLId = new System.Windows.Forms.Label();
-            this.boxSbmOut = new System.Windows.Forms.TextBox();
-            this.boxSbmIn2 = new System.Windows.Forms.TextBox();
-            this.boxSbmIn1 = new System.Windows.Forms.TextBox();
-            this.btnSbmSubmit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlException = new System.Windows.Forms.Panel();
             this.lblExcptn = new System.Windows.Forms.Label();
@@ -83,9 +82,10 @@
             this.txtLinecode = new System.Windows.Forms.TextBox();
             this.lblInput1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblResult = new System.Windows.Forms.Label();
             this.lblSelectionHelp = new System.Windows.Forms.Label();
             this.gBoxMain = new System.Windows.Forms.GroupBox();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.OutputBox = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.pnlSubmit.SuspendLayout();
             this.pnlEdit.SuspendLayout();
@@ -149,16 +149,6 @@
             this.btnAddRow.UseVisualStyleBackColor = true;
             this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
             // 
-            // OutputBox
-            // 
-            this.OutputBox.FormattingEnabled = true;
-            this.OutputBox.ItemHeight = 16;
-            this.OutputBox.Location = new System.Drawing.Point(375, 127);
-            this.OutputBox.Name = "OutputBox";
-            this.OutputBox.Size = new System.Drawing.Size(145, 116);
-            this.OutputBox.TabIndex = 2;
-            this.OutputBox.SelectedIndexChanged += new System.EventHandler(this.OutputBox_SelectedIndexChanged);
-            // 
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(375, 47);
@@ -218,6 +208,84 @@
             this.pnlSubmit.TabStop = false;
             this.pnlSubmit.Text = "Submit to table";
             this.pnlSubmit.Enter += new System.EventHandler(this.pnlSubmit_Enter);
+            // 
+            // boxSbmLId
+            // 
+            this.boxSbmLId.Location = new System.Drawing.Point(6, 43);
+            this.boxSbmLId.Name = "boxSbmLId";
+            this.boxSbmLId.Size = new System.Drawing.Size(91, 22);
+            this.boxSbmLId.TabIndex = 10;
+            this.boxSbmLId.TextChanged += new System.EventHandler(this.boxSbmLId_TextChanged);
+            // 
+            // txtSbmOut
+            // 
+            this.txtSbmOut.AutoSize = true;
+            this.txtSbmOut.Location = new System.Drawing.Point(297, 23);
+            this.txtSbmOut.Name = "txtSbmOut";
+            this.txtSbmOut.Size = new System.Drawing.Size(51, 17);
+            this.txtSbmOut.TabIndex = 9;
+            this.txtSbmOut.Text = "Output";
+            // 
+            // txtSbmIn2
+            // 
+            this.txtSbmIn2.AutoSize = true;
+            this.txtSbmIn2.Location = new System.Drawing.Point(200, 22);
+            this.txtSbmIn2.Name = "txtSbmIn2";
+            this.txtSbmIn2.Size = new System.Drawing.Size(47, 17);
+            this.txtSbmIn2.TabIndex = 8;
+            this.txtSbmIn2.Text = "Input2";
+            // 
+            // txtSbmIn1
+            // 
+            this.txtSbmIn1.AutoSize = true;
+            this.txtSbmIn1.Location = new System.Drawing.Point(100, 23);
+            this.txtSbmIn1.Name = "txtSbmIn1";
+            this.txtSbmIn1.Size = new System.Drawing.Size(47, 17);
+            this.txtSbmIn1.TabIndex = 7;
+            this.txtSbmIn1.Text = "Input1";
+            // 
+            // txtSbmLId
+            // 
+            this.txtSbmLId.AutoSize = true;
+            this.txtSbmLId.Location = new System.Drawing.Point(6, 23);
+            this.txtSbmLId.Name = "txtSbmLId";
+            this.txtSbmLId.Size = new System.Drawing.Size(45, 17);
+            this.txtSbmLId.TabIndex = 6;
+            this.txtSbmLId.Text = "ListId:";
+            // 
+            // boxSbmOut
+            // 
+            this.boxSbmOut.Location = new System.Drawing.Point(300, 43);
+            this.boxSbmOut.Name = "boxSbmOut";
+            this.boxSbmOut.Size = new System.Drawing.Size(77, 22);
+            this.boxSbmOut.TabIndex = 4;
+            this.boxSbmOut.TextChanged += new System.EventHandler(this.boxSbmOut_TextChanged);
+            // 
+            // boxSbmIn2
+            // 
+            this.boxSbmIn2.Location = new System.Drawing.Point(200, 43);
+            this.boxSbmIn2.Name = "boxSbmIn2";
+            this.boxSbmIn2.Size = new System.Drawing.Size(91, 22);
+            this.boxSbmIn2.TabIndex = 3;
+            this.boxSbmIn2.TextChanged += new System.EventHandler(this.boxSbmIn2_TextChanged);
+            // 
+            // boxSbmIn1
+            // 
+            this.boxSbmIn1.Location = new System.Drawing.Point(103, 43);
+            this.boxSbmIn1.Name = "boxSbmIn1";
+            this.boxSbmIn1.Size = new System.Drawing.Size(91, 22);
+            this.boxSbmIn1.TabIndex = 2;
+            this.boxSbmIn1.TextChanged += new System.EventHandler(this.boxSbmIn1_TextChanged);
+            // 
+            // btnSbmSubmit
+            // 
+            this.btnSbmSubmit.Location = new System.Drawing.Point(403, 42);
+            this.btnSbmSubmit.Name = "btnSbmSubmit";
+            this.btnSbmSubmit.Size = new System.Drawing.Size(117, 52);
+            this.btnSbmSubmit.TabIndex = 0;
+            this.btnSbmSubmit.Text = "Submit";
+            this.btnSbmSubmit.UseVisualStyleBackColor = true;
+            this.btnSbmSubmit.Click += new System.EventHandler(this.btnSbmSubmit_Click);
             // 
             // pnlEdit
             // 
@@ -385,84 +453,6 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // boxSbmLId
-            // 
-            this.boxSbmLId.Location = new System.Drawing.Point(6, 43);
-            this.boxSbmLId.Name = "boxSbmLId";
-            this.boxSbmLId.Size = new System.Drawing.Size(91, 22);
-            this.boxSbmLId.TabIndex = 10;
-            this.boxSbmLId.TextChanged += new System.EventHandler(this.boxSbmLId_TextChanged);
-            // 
-            // txtSbmOut
-            // 
-            this.txtSbmOut.AutoSize = true;
-            this.txtSbmOut.Location = new System.Drawing.Point(297, 23);
-            this.txtSbmOut.Name = "txtSbmOut";
-            this.txtSbmOut.Size = new System.Drawing.Size(51, 17);
-            this.txtSbmOut.TabIndex = 9;
-            this.txtSbmOut.Text = "Output";
-            // 
-            // txtSbmIn2
-            // 
-            this.txtSbmIn2.AutoSize = true;
-            this.txtSbmIn2.Location = new System.Drawing.Point(200, 22);
-            this.txtSbmIn2.Name = "txtSbmIn2";
-            this.txtSbmIn2.Size = new System.Drawing.Size(47, 17);
-            this.txtSbmIn2.TabIndex = 8;
-            this.txtSbmIn2.Text = "Input2";
-            // 
-            // txtSbmIn1
-            // 
-            this.txtSbmIn1.AutoSize = true;
-            this.txtSbmIn1.Location = new System.Drawing.Point(100, 23);
-            this.txtSbmIn1.Name = "txtSbmIn1";
-            this.txtSbmIn1.Size = new System.Drawing.Size(47, 17);
-            this.txtSbmIn1.TabIndex = 7;
-            this.txtSbmIn1.Text = "Input1";
-            // 
-            // txtSbmLId
-            // 
-            this.txtSbmLId.AutoSize = true;
-            this.txtSbmLId.Location = new System.Drawing.Point(6, 23);
-            this.txtSbmLId.Name = "txtSbmLId";
-            this.txtSbmLId.Size = new System.Drawing.Size(45, 17);
-            this.txtSbmLId.TabIndex = 6;
-            this.txtSbmLId.Text = "ListId:";
-            // 
-            // boxSbmOut
-            // 
-            this.boxSbmOut.Location = new System.Drawing.Point(300, 43);
-            this.boxSbmOut.Name = "boxSbmOut";
-            this.boxSbmOut.Size = new System.Drawing.Size(77, 22);
-            this.boxSbmOut.TabIndex = 4;
-            this.boxSbmOut.TextChanged += new System.EventHandler(this.boxSbmOut_TextChanged);
-            // 
-            // boxSbmIn2
-            // 
-            this.boxSbmIn2.Location = new System.Drawing.Point(200, 43);
-            this.boxSbmIn2.Name = "boxSbmIn2";
-            this.boxSbmIn2.Size = new System.Drawing.Size(91, 22);
-            this.boxSbmIn2.TabIndex = 3;
-            this.boxSbmIn2.TextChanged += new System.EventHandler(this.boxSbmIn2_TextChanged);
-            // 
-            // boxSbmIn1
-            // 
-            this.boxSbmIn1.Location = new System.Drawing.Point(103, 43);
-            this.boxSbmIn1.Name = "boxSbmIn1";
-            this.boxSbmIn1.Size = new System.Drawing.Size(91, 22);
-            this.boxSbmIn1.TabIndex = 2;
-            this.boxSbmIn1.TextChanged += new System.EventHandler(this.boxSbmIn1_TextChanged);
-            // 
-            // btnSbmSubmit
-            // 
-            this.btnSbmSubmit.Location = new System.Drawing.Point(403, 42);
-            this.btnSbmSubmit.Name = "btnSbmSubmit";
-            this.btnSbmSubmit.Size = new System.Drawing.Size(117, 52);
-            this.btnSbmSubmit.TabIndex = 0;
-            this.btnSbmSubmit.Text = "Submit";
-            this.btnSbmSubmit.UseVisualStyleBackColor = true;
-            this.btnSbmSubmit.Click += new System.EventHandler(this.btnSbmSubmit_Click);
             // 
             // panel2
             // 
@@ -635,16 +625,6 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Check Conversion";
             // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(372, 107);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(52, 17);
-            this.lblResult.TabIndex = 3;
-            this.lblResult.Text = "Result:";
-            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
-            // 
             // lblSelectionHelp
             // 
             this.lblSelectionHelp.AutoSize = true;
@@ -670,6 +650,28 @@
             this.gBoxMain.TabStop = false;
             this.gBoxMain.Text = "Conversion selection";
             this.gBoxMain.Enter += new System.EventHandler(this.gBoxMain_Enter);
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(372, 107);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(52, 17);
+            this.lblResult.TabIndex = 3;
+            this.lblResult.Text = "Result:";
+            this.lblResult.Visible = false;
+            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
+            // 
+            // OutputBox
+            // 
+            this.OutputBox.FormattingEnabled = true;
+            this.OutputBox.ItemHeight = 16;
+            this.OutputBox.Location = new System.Drawing.Point(375, 127);
+            this.OutputBox.Name = "OutputBox";
+            this.OutputBox.Size = new System.Drawing.Size(145, 116);
+            this.OutputBox.TabIndex = 2;
+            this.OutputBox.Visible = false;
+            this.OutputBox.SelectedIndexChanged += new System.EventHandler(this.OutputBox_SelectedIndexChanged);
             // 
             // Form2
             // 
@@ -714,12 +716,10 @@
         private System.Windows.Forms.Button btnEditRow;
         private System.Windows.Forms.Button btnDelRow;
         private System.Windows.Forms.Button btnAddRow;
-        private System.Windows.Forms.ListBox OutputBox;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.ComboBox boxSlctType;
         private System.Windows.Forms.TextBox txtListId;
         private System.Windows.Forms.TextBox txtLinecode;
-        private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Panel pnlLinecode;
         private System.Windows.Forms.Label lblLinecodeHelp;
         private System.Windows.Forms.Label lblListId;
@@ -767,5 +767,7 @@
         private System.Windows.Forms.TextBox boxGetFromId;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnGoTable;
+        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.ListBox OutputBox;
     }
 }
