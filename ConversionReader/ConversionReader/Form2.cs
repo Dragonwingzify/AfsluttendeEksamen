@@ -24,6 +24,9 @@ namespace ConversionReader
         public string Output { get; set; }
         public string Id { get; set; }
 
+        private List<string> outputList = new List<string>();
+        
+
         Handler handler = MainWindow.Handler; //shorthand variable
 
         /*  panel2 is the interface for linecode/port&pier input boxes */
@@ -176,6 +179,28 @@ namespace ConversionReader
                     }
                     break;
             }
+
+
+            //Add to text fields in Submit
+            boxSbmLId.Text = ListId;
+            boxSbmIn1.Text = Input1;
+            boxSbmIn2.Text = Input2;
+            boxSbmOut.Text = Output;
+
+            //Add to text fields in Edit
+            boxEditLId.Text = ListId;
+            boxEditInput1.Text = Input1;
+            boxEditInput2.Text = Input2;
+            boxEditOutput.Text = Output;
+
+            //Doesn't currently update box.
+            outputList.Add("Output: " + Output);
+            outputList.Add("List-Id: " + ListId);
+            outputList.Add("Input1: " + Input1);
+            outputList.Add("Input2: " + Input2);
+
+            foreach (string item in outputList)
+                OutputBox.Text = item;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -257,7 +282,7 @@ namespace ConversionReader
 
         private void boxSbmLId_TextChanged(object sender, EventArgs e)
         {
-            boxSbmLId.Text = ListId;
+            ListId = boxSbmLId.Text; 
         }
 
         private void OutputBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -316,21 +341,22 @@ namespace ConversionReader
 
         private void boxSbmIn1_TextChanged(object sender, EventArgs e)
         {
-            boxSbmIn1.Text = Input1;
+                Input1 = boxSbmIn1.Text;
         }
 
         private void boxSbmIn2_TextChanged(object sender, EventArgs e)
         {
-            boxSbmIn2.Text = Input2;
+                Input2 = boxSbmIn2.Text;
         }
 
         private void boxSlctId_TextChanged(object sender, EventArgs e)
         {
+            Id = boxSlctId.Text;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            handler.DeleteRow(boxSlctId.Text, ToThrow);
+            handler.DeleteRow(Id, ToThrow);
         }
 
         private void btnDelRow_Click(object sender, EventArgs e)
@@ -344,6 +370,13 @@ namespace ConversionReader
 
         private void boxGetFromId_TextChanged(object sender, EventArgs e)
         {
+            if (boxGetFromId.Text == "")
+                btnEdit.Enabled = false;
+            else
+            {
+                Id = boxGetFromId.Text;
+                btnEdit.Enabled = true;
+            }
         }
 
         private void btnGetFromId_Click(object sender, EventArgs e)
@@ -359,23 +392,30 @@ namespace ConversionReader
             else
                 type = 2;
 
-            handler.UpdateRow(boxGetFromId.Text, boxEditLId.Text, boxEditInput1.Text, boxEditInput2.Text, boxEditOutput.Text, type, ToThrow);
+            if (boxGetFromId.Text == "")
+                MessageBox.Show("Please Insert an ID into the input field.");
+            else
+                handler.UpdateRow(boxGetFromId.Text, boxEditLId.Text, boxEditInput1.Text, boxEditInput2.Text, boxEditOutput.Text, type, ToThrow);
         }
 
         private void boxEditLId_TextChanged(object sender, EventArgs e)
         {
+                ListId = boxEditLId.Text;
         }
 
         private void boxEditInput1_TextChanged(object sender, EventArgs e)
         {
+                Input1 = boxEditInput1.Text;
         }
 
         private void boxEditInput2_TextChanged(object sender, EventArgs e)
         {
+                Input2 = boxEditInput2.Text;
         }
 
         private void boxEditOutput_TextChanged(object sender, EventArgs e)
         {
+            Output = boxEditOutput.Text;
         }
 
         private void btnEditRow_Click(object sender, EventArgs e)

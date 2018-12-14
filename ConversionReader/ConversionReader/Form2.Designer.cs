@@ -48,7 +48,6 @@
             this.boxSbmIn1 = new System.Windows.Forms.TextBox();
             this.btnSbmSubmit = new System.Windows.Forms.Button();
             this.pnlEdit = new System.Windows.Forms.GroupBox();
-            this.btnGetFromId = new System.Windows.Forms.Button();
             this.boxEditLId = new System.Windows.Forms.TextBox();
             this.lblEditOutput = new System.Windows.Forms.Label();
             this.lblEditInput2 = new System.Windows.Forms.Label();
@@ -289,7 +288,6 @@
             // 
             // pnlEdit
             // 
-            this.pnlEdit.Controls.Add(this.btnGetFromId);
             this.pnlEdit.Controls.Add(this.boxEditLId);
             this.pnlEdit.Controls.Add(this.lblEditOutput);
             this.pnlEdit.Controls.Add(this.lblEditInput2);
@@ -301,23 +299,13 @@
             this.pnlEdit.Controls.Add(this.lblSelectId);
             this.pnlEdit.Controls.Add(this.boxGetFromId);
             this.pnlEdit.Controls.Add(this.btnEdit);
-            this.pnlEdit.Location = new System.Drawing.Point(754, 166);
+            this.pnlEdit.Location = new System.Drawing.Point(308, 11);
             this.pnlEdit.Name = "pnlEdit";
             this.pnlEdit.Size = new System.Drawing.Size(535, 110);
             this.pnlEdit.TabIndex = 16;
             this.pnlEdit.TabStop = false;
             this.pnlEdit.Text = "Edit row in table";
             this.pnlEdit.Visible = false;
-            // 
-            // btnGetFromId
-            // 
-            this.btnGetFromId.Location = new System.Drawing.Point(211, 20);
-            this.btnGetFromId.Name = "btnGetFromId";
-            this.btnGetFromId.Size = new System.Drawing.Size(44, 23);
-            this.btnGetFromId.TabIndex = 19;
-            this.btnGetFromId.Text = "Get";
-            this.btnGetFromId.UseVisualStyleBackColor = true;
-            this.btnGetFromId.Click += new System.EventHandler(this.btnGetFromId_Click);
             // 
             // boxEditLId
             // 
@@ -419,7 +407,7 @@
             this.pnlDelete.Controls.Add(this.lblSelctId);
             this.pnlDelete.Controls.Add(this.boxSlctId);
             this.pnlDelete.Controls.Add(this.btnDelete);
-            this.pnlDelete.Location = new System.Drawing.Point(754, 43);
+            this.pnlDelete.Location = new System.Drawing.Point(754, 28);
             this.pnlDelete.Name = "pnlDelete";
             this.pnlDelete.Size = new System.Drawing.Size(535, 110);
             this.pnlDelete.TabIndex = 15;
@@ -754,7 +742,6 @@
         private System.Windows.Forms.TextBox boxSlctId;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox pnlEdit;
-        private System.Windows.Forms.Button btnGetFromId;
         private System.Windows.Forms.TextBox boxEditLId;
         private System.Windows.Forms.Label lblEditOutput;
         private System.Windows.Forms.Label lblEditInput2;
@@ -763,11 +750,11 @@
         private System.Windows.Forms.TextBox boxEditOutput;
         private System.Windows.Forms.TextBox boxEditInput2;
         private System.Windows.Forms.TextBox boxEditInput1;
-        private System.Windows.Forms.Label lblSelectId;
-        private System.Windows.Forms.TextBox boxGetFromId;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnGoTable;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.ListBox OutputBox;
+        private System.Windows.Forms.Label lblSelectId;
+        private System.Windows.Forms.TextBox boxGetFromId;
     }
 }
