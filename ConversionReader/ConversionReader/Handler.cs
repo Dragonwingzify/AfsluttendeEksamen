@@ -17,31 +17,32 @@ namespace ConversionReader
     {
         //Fields: SQL Data object which references the ConversionReader table
 
-        SqlCommand sqlCommand;
-        string connectionstring = @"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
-        public string sql;
+        public SqlCommand SqlCommand { get; set; }
+        private string connectionstring = @"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
+        public string ConnectionString { get { return connectionstring; } }
+        public string Sql;
         string cmdSqlGet;
 
         public Handler(string sqlServer)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionstring))  //initialized
-            {
-                try
-                {
+            //using (SqlConnection sqlConnection = new SqlConnection(connectionstring))  //initialized
+            //{
+            //    try
+            //    {
 
-                    connectionstring = sqlServer;
-                    sqlCommand = new SqlCommand(sql, sqlConnection);
-                    sqlConnection.Open();
-                    sqlCommand.CommandText = "SELECT * FROM convert_platform";
-                    sqlCommand.ExecuteNonQuery();
-                    sqlCommand.Dispose();
-                    Console.WriteLine("Database: " + sqlConnection.Database);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Couldn't connect to any database! error: " + e);
-                }
-            }
+            //        connectionstring = sqlServer;
+            //        SqlCommand = new SqlCommand(Sql, sqlConnection);
+            //        sqlConnection.Open();
+            //        SqlCommand.CommandText = "SELECT * FROM convert_platform";
+            //        SqlCommand.ExecuteNonQuery();
+            //        SqlCommand.Dispose();
+            //        Console.WriteLine("Database: " + sqlConnection.Database);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Console.WriteLine("Couldn't connect to any database! error: " + e);
+            //    }
+            //}
 
         }
 
@@ -52,14 +53,14 @@ namespace ConversionReader
             {
                 using (var conn = new SqlConnection(connectionstring))
                 {
-                    sqlCommand = new SqlCommand("dbo.GetFromLineCode", conn);
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
-                    sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add("@Linecode", SqlDbType.NVarChar);
-                    sqlCommand.Parameters["@Linecode"].Value = lineCode;
+                    SqlCommand = new SqlCommand("dbo.GetFromLineCode", conn);
+                    SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
+                    SqlCommand.Parameters["@ListId"].Value = listID;
+                    SqlCommand.Parameters.Add("@Linecode", SqlDbType.NVarChar);
+                    SqlCommand.Parameters["@Linecode"].Value = lineCode;
                     conn.Open();
-                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    using (SqlDataReader reader = SqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -89,16 +90,16 @@ namespace ConversionReader
                 using (var conn = new SqlConnection(connectionstring))
 
                 {
-                    sqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn);
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Parameters.Add(new SqlParameter("@listId", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Port"].Value = port;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Pier"].Value = pier;
+                    SqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn);
+                    SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand.Parameters.Add(new SqlParameter("@listId", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@ListId"].Value = listID;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@Port"].Value = port;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@Pier"].Value = pier;
                     conn.Open();
-                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    using (SqlDataReader reader = SqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -126,28 +127,28 @@ namespace ConversionReader
                 using (var conn = new SqlConnection(connectionstring))
 
                 {
-                    sqlCommand = new SqlCommand("dbo.SetPartner", conn);
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Input1"].Value = input1;
+                    SqlCommand = new SqlCommand("dbo.SetPartner", conn);
+                    SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@ListId"].Value = listID;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@Input1"].Value = input1;
                     if (input2 == "NULL")
                     {
-                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@Input2"].Value = DBNull.Value;
+                        SqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        SqlCommand.Parameters["@Input2"].Value = DBNull.Value;
                     }
                     else
                     {
-                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@Input2"].Value = input2;
+                        SqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        SqlCommand.Parameters["@Input2"].Value = input2;
                     }
-                    sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Output"].Value = output;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
-                    sqlCommand.Parameters["@Type"].Value = type;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@Output"].Value = output;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
+                    SqlCommand.Parameters["@Type"].Value = type;
                     conn.Open();
-                    sqlCommand.ExecuteNonQuery();
+                    SqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Row has been added");
                     conn.Dispose();
                 }
@@ -170,30 +171,30 @@ namespace ConversionReader
                 using (var conn = new SqlConnection(connectionstring))
 
                 {
-                    sqlCommand = new SqlCommand("dbo.UpdatePartner", conn);
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
-                    sqlCommand.Parameters["@CurrentId"].Value = currentId;
-                    sqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@ListId"].Value = listID;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Input1"].Value = input1;
+                    SqlCommand = new SqlCommand("dbo.UpdatePartner", conn);
+                    SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
+                    SqlCommand.Parameters["@CurrentId"].Value = currentId;
+                    SqlCommand.Parameters.Add(new SqlParameter("@ListId", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@ListId"].Value = listID;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Input1", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@Input1"].Value = input1;
                     if (input2 == "NULL")
                     {
-                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@Input2"].Value = DBNull.Value;
+                        SqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        SqlCommand.Parameters["@Input2"].Value = DBNull.Value;
                     }
                     else
                     {
-                        sqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
-                        sqlCommand.Parameters["@Input2"].Value = input2;
+                        SqlCommand.Parameters.Add(new SqlParameter("@Input2", SqlDbType.NVarChar));
+                        SqlCommand.Parameters["@Input2"].Value = input2;
                     }
-                    sqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
-                    sqlCommand.Parameters["@Output"].Value = output;
-                    sqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
-                    sqlCommand.Parameters["@Type"].Value = type;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Output", SqlDbType.NVarChar));
+                    SqlCommand.Parameters["@Output"].Value = output;
+                    SqlCommand.Parameters.Add(new SqlParameter("@Type", SqlDbType.Int));
+                    SqlCommand.Parameters["@Type"].Value = type;
                     conn.Open();
-                    sqlCommand.ExecuteNonQuery();
+                    SqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Row has been Updated");
                     conn.Dispose();
                 }
@@ -216,12 +217,12 @@ namespace ConversionReader
                 using (var conn = new SqlConnection(connectionstring))
 
                 {
-                    sqlCommand = new SqlCommand("dbo.DeletePartner", conn);
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
-                    sqlCommand.Parameters["@CurrentId"].Value = currentId;
+                    SqlCommand = new SqlCommand("dbo.DeletePartner", conn);
+                    SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand.Parameters.Add(new SqlParameter("@CurrentId", SqlDbType.Int));
+                    SqlCommand.Parameters["@CurrentId"].Value = currentId;
                     conn.Open();
-                    sqlCommand.ExecuteNonQuery();
+                    SqlCommand.ExecuteNonQuery();
                     Console.WriteLine("Row has been Deleted");
                     conn.Dispose();
                 }

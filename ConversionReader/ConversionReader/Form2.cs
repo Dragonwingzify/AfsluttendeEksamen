@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ConversionReader.MainWindow;
+using System.Data.SqlClient;
 
 namespace ConversionReader
 {
@@ -22,7 +23,7 @@ namespace ConversionReader
         public bool ToThrow { get; set; }
         public string Output { get; set; }
         public string Id { get; set; }
-		
+
         Handler handler = MainWindow.Handler; //shorthand variable
 
         /*  panel2 is the interface for linecode/port&pier input boxes */
@@ -40,20 +41,20 @@ namespace ConversionReader
             x = pnlLinecode.Location.X;
             y = pnlLinecode.Location.Y;
 
-            Point Location = new Point(190,288);
+            Point Location = new Point(190, 288);
         }
 
         private void btnRtrnMain_Click(object sender, EventArgs e)
         {
             // If we press backbutton, all other forms than MainWindow will close
             Form[] forms = Application.OpenForms.Cast<Form>().ToArray();
-            foreach(Form thisForm in forms)
+            foreach (Form thisForm in forms)
             {
                 if (thisForm.Name != "MainWindow") thisForm.Close();
             }
-                this.Hide();
-                var form = new MainWindow();
-                form.ShowDialog();
+            this.Hide();
+            var form = new MainWindow();
+            form.ShowDialog();
         }
 
         private void btnGoTable_Click(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace ConversionReader
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            
+
             //Switch case: Which type is selected in the dropdown?
             switch (boxSlctType.SelectedIndex)
             {
@@ -85,16 +86,89 @@ namespace ConversionReader
                     OutputBox.Text = handler.GetFromLineCode(ListId, Input1, ToThrow);
                     if (OutputBox.Text != null)
                     {
+                        #region values to txt boxes
+                        try
+                        {
+                            using (var conn = new SqlConnection(handler.ConnectionString))
+                            {
+                                handler.SqlCommand = new SqlCommand("dbo.GetFromLineCode", conn);
+                                handler.SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                handler.SqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
+                                handler.SqlCommand.Parameters["@ListId"].Value = ListId;
+                                handler.SqlCommand.Parameters.Add("@Linecode", SqlDbType.NVarChar);
+                                handler.SqlCommand.Parameters["@Linecode"].Value = Input1;
+                                conn.Open();
+                                using (SqlDataReader reader = handler.SqlCommand.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        Output = reader.GetString(reader.GetOrdinal("output"));
+                                        ListId = reader.GetString(reader.GetOrdinal("list_id"));
+                                        Id = reader.GetString(reader.GetOrdinal("id"));
+                                        Input1 = reader.GetString(reader.GetOrdinal("input1"));
+                                    }
+                                }
+                                conn.Dispose();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            if (ToThrow == true)
+                            {
+                                MessageBox.Show(ex.ToString());
+                                //throw ex;
+                            }
+
+                        }
+                        #endregion
                         boxSbmOut.Text = OutputBox.Text;
                         boxSbmLId.Text = txtListId.Text;
                         boxSbmIn1.Text = txtLinecode.Text;
                     }
-                       
+
                     break;
                 case 1:
                     OutputBox.Text = handler.GetFromPortAndPier(ListId, Input1, Input2, ToThrow);
                     if (OutputBox.Text != null)
                     {
+                        #region values to txt boxes
+                        try
+                        {
+                            using (var conn = new SqlConnection(handler.ConnectionString))
+                            {
+                                handler.SqlCommand = new SqlCommand("dbo.GetFromPortAndPier", conn);
+                                handler.SqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                                handler.SqlCommand.Parameters.Add("@ListId", SqlDbType.NVarChar);
+                                handler.SqlCommand.Parameters["@ListId"].Value = ListId;
+                                handler.SqlCommand.Parameters.Add(new SqlParameter("@Port", SqlDbType.NVarChar));
+                                handler.SqlCommand.Parameters["@Port"].Value = Input1;
+                                handler.SqlCommand.Parameters.Add(new SqlParameter("@Pier", SqlDbType.NVarChar));
+                                handler.SqlCommand.Parameters["@Pier"].Value = Input2;
+                                conn.Open();
+                                using (SqlDataReader reader = handler.SqlCommand.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        Output = reader.GetString(reader.GetOrdinal("output"));
+                                        ListId = reader.GetString(reader.GetOrdinal("list_id"));
+                                        Id = reader.GetString(reader.GetOrdinal("id"));
+                                        Input1 = reader.GetString(reader.GetOrdinal("input1"));
+                                        Input2 = reader.GetString(reader.GetOrdinal("input2"));
+                                    }
+                                }
+                                conn.Dispose();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            if (ToThrow == true)
+                            {
+                                MessageBox.Show(ex.ToString());
+                                //throw ex;
+                            }
+
+                        }
+                        #endregion
                         boxSbmOut.Text = OutputBox.Text;
                         boxSbmLId.Text = txtListId_Ex.Text;
                         boxSbmIn1.Text = txtPort.Text;
@@ -183,12 +257,12 @@ namespace ConversionReader
 
         private void boxSbmLId_TextChanged(object sender, EventArgs e)
         {
-            ListId = boxSbmLId.Text;
+            boxSbmLId.Text = ListId;
         }
 
         private void OutputBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void chkExcptn_CheckedChanged(object sender, EventArgs e)
@@ -237,17 +311,17 @@ namespace ConversionReader
             if (Input2 != null)
                 type = 2;
 
-                handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
+            handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
         }
 
         private void boxSbmIn1_TextChanged(object sender, EventArgs e)
         {
-            Input1 = boxSbmIn1.Text;
+            boxSbmIn1.Text = Input1;
         }
 
         private void boxSbmIn2_TextChanged(object sender, EventArgs e)
         {
-            Input2 = boxSbmIn2.Text;
+            boxSbmIn2.Text = Input2;
         }
 
         private void boxSlctId_TextChanged(object sender, EventArgs e)
@@ -274,7 +348,7 @@ namespace ConversionReader
 
         private void btnGetFromId_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
