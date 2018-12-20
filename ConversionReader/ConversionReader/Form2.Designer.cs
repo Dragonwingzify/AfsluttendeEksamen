@@ -164,7 +164,7 @@
             this.btnGoTable.Name = "btnGoTable";
             this.btnGoTable.Size = new System.Drawing.Size(112, 37);
             this.btnGoTable.TabIndex = 4;
-            this.btnGoTable.Text = "Go To Table";
+            this.btnGoTable.Text = "Show table";
             this.btnGoTable.UseVisualStyleBackColor = true;
             this.btnGoTable.Click += new System.EventHandler(this.btnGoTable_Click);
             // 
