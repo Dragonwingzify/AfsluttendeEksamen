@@ -40,7 +40,7 @@
             this.Converts.Name = "Converts";
             this.Converts.Size = new System.Drawing.Size(178, 57);
             this.Converts.TabIndex = 0;
-            this.Converts.Text = "Show converts";
+            this.Converts.Text = "Show conversions";
             this.Converts.UseVisualStyleBackColor = true;
             this.Converts.Click += new System.EventHandler(this.Converts_Click);
             // 
@@ -50,7 +50,7 @@
             this.Table.Name = "Table";
             this.Table.Size = new System.Drawing.Size(178, 57);
             this.Table.TabIndex = 1;
-            this.Table.Text = "Show tables";
+            this.Table.Text = "Show table";
             this.Table.UseVisualStyleBackColor = true;
             this.Table.Click += new System.EventHandler(this.Table_Click);
             // 
@@ -86,7 +86,7 @@
             this.Controls.Add(this.Converts);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.Text = "Integration Platform";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

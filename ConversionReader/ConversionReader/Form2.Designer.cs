@@ -675,7 +675,7 @@
             this.Controls.Add(this.btnRtrnMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Conversion view";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.pnlSubmit.ResumeLayout(false);

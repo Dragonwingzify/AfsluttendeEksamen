@@ -63,7 +63,7 @@
             this.Controls.Add(this.BackButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Table view";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
