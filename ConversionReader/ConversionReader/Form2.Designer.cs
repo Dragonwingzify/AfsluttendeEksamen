@@ -200,12 +200,12 @@
             this.pnlSubmit.Controls.Add(this.boxSbmIn1);
             this.pnlSubmit.Controls.Add(this.btnSbmSubmit);
             this.pnlSubmit.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pnlSubmit.Location = new System.Drawing.Point(190, 282);
+            this.pnlSubmit.Location = new System.Drawing.Point(190, 285);
             this.pnlSubmit.Name = "pnlSubmit";
             this.pnlSubmit.Size = new System.Drawing.Size(535, 110);
             this.pnlSubmit.TabIndex = 14;
             this.pnlSubmit.TabStop = false;
-            this.pnlSubmit.Text = "Submit to table";
+            this.pnlSubmit.Text = "Add Row";
             this.pnlSubmit.Enter += new System.EventHandler(this.pnlSubmit_Enter);
             // 
             // boxSbmLId
@@ -299,12 +299,12 @@
             this.pnlEdit.Controls.Add(this.lblSelectId);
             this.pnlEdit.Controls.Add(this.boxGetFromId);
             this.pnlEdit.Controls.Add(this.btnEdit);
-            this.pnlEdit.Location = new System.Drawing.Point(308, 11);
+            this.pnlEdit.Location = new System.Drawing.Point(754, 181);
             this.pnlEdit.Name = "pnlEdit";
             this.pnlEdit.Size = new System.Drawing.Size(535, 110);
             this.pnlEdit.TabIndex = 16;
             this.pnlEdit.TabStop = false;
-            this.pnlEdit.Text = "Edit row in table";
+            this.pnlEdit.Text = "Edit Row";
             this.pnlEdit.Visible = false;
             // 
             // boxEditLId
@@ -412,7 +412,7 @@
             this.pnlDelete.Size = new System.Drawing.Size(535, 110);
             this.pnlDelete.TabIndex = 15;
             this.pnlDelete.TabStop = false;
-            this.pnlDelete.Text = "Delete row from table";
+            this.pnlDelete.Text = "Delete Row";
             this.pnlDelete.Visible = false;
             // 
             // lblSelctId
