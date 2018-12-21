@@ -112,14 +112,6 @@ namespace TestHandler
             Assert.AreEqual("", output);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
-        public void DeleteDataTestFail1()
-        {
-            ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-            handler.DeleteRow("200", true);
-        }
-
         //[TestMethod]
         //[ExpectedException(typeof(FormatException))]
         //public void DeleteDataTestFail2()
