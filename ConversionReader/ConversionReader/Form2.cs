@@ -81,12 +81,18 @@ namespace ConversionReader
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            Row row = null;
             //Switch case: Which type is selected in the dropdown?
             switch (boxSlctType.SelectedIndex)
             {
                 case 0:
-                    OutputBox.Text = handler.GetFromLineCode(ListId, Input1, ToThrow);
+                    row = handler.GetFromLineCode(ListId, Input1, ToThrow);
+                    OutputBox.Text = row.Output;
+                    boxSbmIn1.Text = row.Input1;
+                    boxSbmIn2.Text = row.Input2;
+                    boxSbmLId.Text = row.ListId;
+                    boxSlctId.Text = row.Id.ToString();
+                    boxGetFromId.Text = row.Id.ToString();
                     if (OutputBox.Text != null)
                     {
                         #region values to txt boxes
@@ -125,13 +131,19 @@ namespace ConversionReader
                         }
                         #endregion
                         boxSbmOut.Text = OutputBox.Text;
-                        boxSbmLId.Text = txtListId.Text;
-                        boxSbmIn1.Text = txtLinecode.Text;
+                        //boxSbmLId.Text = txtListId.Text;
+                        //boxSbmIn1.Text = txtLinecode.Text;
                     }
 
                     break;
                 case 1:
-                    OutputBox.Text = handler.GetFromPortAndPier(ListId, Input1, Input2, ToThrow);
+                    row = handler.GetFromPortAndPier(ListId, Input1, Input2, ToThrow);
+                    OutputBox.Text = row.Output;
+                    boxSbmIn1.Text = row.Input1;
+                    boxSbmIn2.Text = row.Input2;
+                    boxSbmLId.Text = row.ListId;
+                    boxSlctId.Text = row.Id.ToString();
+                    boxGetFromId.Text = row.Id.ToString();
                     if (OutputBox.Text != null)
                     {
                         #region values to txt boxes
@@ -173,19 +185,19 @@ namespace ConversionReader
                         }
                         #endregion
                         boxSbmOut.Text = OutputBox.Text;
-                        boxSbmLId.Text = txtListId_Ex.Text;
-                        boxSbmIn1.Text = txtPort.Text;
-                        boxSbmIn2.Text = txtPier.Text;
+                        //boxSbmLId.Text = txtListId_Ex.Text;
+                        //boxSbmIn1.Text = txtPort.Text;
+                        //boxSbmIn2.Text = txtPier.Text;
                     }
                     break;
             }
 
 
             //Add to text fields in Submit
-            boxSbmLId.Text = ListId;
-            boxSbmIn1.Text = Input1;
-            boxSbmIn2.Text = Input2;
-            boxSbmOut.Text = Output;
+            //boxSbmLId.Text = ListId;
+            //boxSbmIn1.Text = Input1;
+            //boxSbmIn2.Text = Input2;
+            //boxSbmOut.Text = Output;
 
             //Add to text fields in Edit
             boxEditLId.Text = ListId;
@@ -218,6 +230,9 @@ namespace ConversionReader
                 //Activate Linecode Panel
                 pnlLinecode.Location = new Point(x, y); //placement
                 pnlLinecode.Visible = true;
+                txtListId_Ex.Text = "";
+                txtPort.Text = "";
+                txtPier.Text = "";
             }
             else if (boxSlctType.SelectedIndex == 1)
             {
@@ -225,6 +240,8 @@ namespace ConversionReader
 
                 pnlPortPier.Location = new Point(x, y);
                 pnlPortPier.Visible = true;
+                txtListId.Text = "";
+                txtLinecode.Text = "";
             }
             else
                 panel2.Visible = false;

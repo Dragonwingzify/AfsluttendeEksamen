@@ -299,7 +299,7 @@
             this.pnlEdit.Controls.Add(this.lblSelectId);
             this.pnlEdit.Controls.Add(this.boxGetFromId);
             this.pnlEdit.Controls.Add(this.btnEdit);
-            this.pnlEdit.Location = new System.Drawing.Point(754, 181);
+            this.pnlEdit.Location = new System.Drawing.Point(754, 190);
             this.pnlEdit.Name = "pnlEdit";
             this.pnlEdit.Size = new System.Drawing.Size(535, 110);
             this.pnlEdit.TabIndex = 16;
@@ -407,7 +407,7 @@
             this.pnlDelete.Controls.Add(this.lblSelctId);
             this.pnlDelete.Controls.Add(this.boxSlctId);
             this.pnlDelete.Controls.Add(this.btnDelete);
-            this.pnlDelete.Location = new System.Drawing.Point(754, 28);
+            this.pnlDelete.Location = new System.Drawing.Point(754, 41);
             this.pnlDelete.Name = "pnlDelete";
             this.pnlDelete.Size = new System.Drawing.Size(535, 110);
             this.pnlDelete.TabIndex = 15;

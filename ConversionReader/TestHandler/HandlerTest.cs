@@ -12,8 +12,8 @@ namespace TestHandler
         public void GetFromLineCodeTest()
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
-            string output = handler.GetFromLineCode("DEFAULT", "1370", false);
+            Row row = handler.GetFromLineCode("DEFAULT", "1370", false);
+            string output = row.Output;
             Assert.AreEqual("APL", output);
         }
 
@@ -21,8 +21,8 @@ namespace TestHandler
         public void GetFromLineCodeEmptyTest()
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
-            string output = handler.GetFromLineCode("DEFAULT", "3332", false);
+            Row row = handler.GetFromLineCode("DEFAULT", "3332", false);
+            string output = row.Output;
             Assert.AreEqual("", output);
         }
 
@@ -35,7 +35,7 @@ namespace TestHandler
         //{
         //    ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
-        //    string output = handler.GetFromPortAndPier("DEFAULT", "lskfkadjf", "", true);
+        //    Row row = handler.GetFromPortAndPier("DEFAULT", "lskfkadjf", "", true);
 
         //}
 
@@ -45,7 +45,7 @@ namespace TestHandler
         //{
         //    ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
 
-        //    string output = handler.GetFromPortAndPier("DEFAULT", "lskfkadjf", "", true);
+        //    Row row = handler.GetFromPortAndPier("DEFAULT", "lskfkadjf", "", true);
 
         //}
 
@@ -53,8 +53,8 @@ namespace TestHandler
         public void GetFromLineCodeSecondSearchTest()
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
-            string output = handler.GetFromLineCode("DEHAM", "4000", false);
+            Row row = handler.GetFromLineCode("DEHAM", "4000", false);
+            string output = row.Output;
             Assert.AreEqual("HMM", output);
         }
 
@@ -62,8 +62,8 @@ namespace TestHandler
         public void GetFromPortAndPierTest()
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
-            string output = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCT", false);
+            Row row = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCT", false);
+            string output = row.Output;
             Assert.AreEqual("DKFCT", output);
         }
 
@@ -71,8 +71,8 @@ namespace TestHandler
         public void GetFromPortAndPierSecondTryTest()
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
-            string output = handler.GetFromPortAndPier("CMA", "DKAAR", "FCT", false);
+            Row row = handler.GetFromPortAndPier("CMA", "DKAAR", "FCT", false);
+            string output = row.Output;
             Assert.AreEqual("DKFCT", output);
         }
 
@@ -80,8 +80,8 @@ namespace TestHandler
         public void GetFromPortAndPierEmptyTest()
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
-
-            string output = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCR", false);
+            Row row = handler.GetFromPortAndPier("DEFAULT", "DKAAR", "FCR", false);
+            string output = row.Output;
             Assert.AreEqual("", output);
         }
 
@@ -90,7 +90,8 @@ namespace TestHandler
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
             handler.SetRow("DEFAULT", "0001", "NULL", "TEST", 1, false);
-            string output = handler.GetFromLineCode("DEFAULT", "0001", false);
+            Row row = handler.GetFromLineCode("DEFAULT", "0001", false);
+            string output = row.Output;
             Assert.AreEqual("TEST", output);
         }
 
@@ -99,7 +100,8 @@ namespace TestHandler
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
             handler.UpdateRow("96", "DEFAULT", "0002", DBNull.Value.ToString(), "TESTER", 1, false);
-            string output = handler.GetFromLineCode("DEFAULT", "0002", false);
+            Row row = handler.GetFromLineCode("DEFAULT", "0002", false);
+            string output = row.Output;
             Assert.AreEqual("TESTER", output);
         }
 
@@ -108,7 +110,8 @@ namespace TestHandler
         {
             ConversionReader.Handler handler = new Handler(@"Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12");
             handler.DeleteRow("96", false);
-            string output = handler.GetFromLineCode("DEFAULT", "0002", false);
+            Row row = handler.GetFromLineCode("DEFAULT", "0002", false);
+            string output = row.Output;
             Assert.AreEqual("", output);
         }
 

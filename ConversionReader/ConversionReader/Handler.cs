@@ -46,9 +46,9 @@ namespace ConversionReader
 
         }
 
-        public string GetFromLineCode(string listID, string lineCode, bool toThrow)
+        public Row GetFromLineCode(string listID, string lineCode, bool toThrow)
         {
-            string output = "";
+            Row row = null;
             try
             {
                 using (var conn = new SqlConnection(connectionstring))
@@ -64,7 +64,9 @@ namespace ConversionReader
                     {
                         while (reader.Read())
                         {
-                            output = reader.GetString(reader.GetOrdinal("output"));
+                            row = new Row(reader.GetInt32(reader.GetOrdinal("id")), reader.GetString(reader.GetOrdinal("list_id")), reader.GetString(reader.GetOrdinal("input1")), 
+                                "", reader.GetString(reader.GetOrdinal("output")));
+                            
                         }
                     }
                     conn.Dispose();
@@ -72,6 +74,7 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
+                row = new Row(0, "", "", "", "");
                 if (toThrow == true)
                 {
                     MessageBox.Show(ex.ToString());
@@ -79,12 +82,16 @@ namespace ConversionReader
                 }
 
             }
-            Console.WriteLine("Output is: {0}", output);
-            return output;
+            if (row == null)
+            {
+                row = new Row(0, "", "", "", "");
+            }
+            Console.WriteLine("Output is: {0}", row.Output);
+            return row;
         }
-        public string GetFromPortAndPier(string listID, string port, string pier, bool toThrow)
+        public Row GetFromPortAndPier(string listID, string port, string pier, bool toThrow)
         {
-            string output = "";
+            Row row = null;
             try
             {
                 using (var conn = new SqlConnection(connectionstring))
@@ -103,7 +110,8 @@ namespace ConversionReader
                     {
                         while (reader.Read())
                         {
-                            output = reader.GetString(reader.GetOrdinal("output"));
+                            row = new Row(reader.GetInt32(reader.GetOrdinal("id")), reader.GetString(reader.GetOrdinal("list_id")), reader.GetString(reader.GetOrdinal("input1")),
+                                reader.GetString(reader.GetOrdinal("input2")), reader.GetString(reader.GetOrdinal("output")));
                         }
                     }
                     conn.Dispose();
@@ -111,13 +119,18 @@ namespace ConversionReader
             }
             catch (Exception ex)
             {
+                row = new Row(0, "", "", "", "");
                 if (toThrow == true)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
-            Console.WriteLine("Output is: {0}", output);
-            return output;
+            if (row == null)
+            {
+                row = new Row(0, "", "", "", "");
+            }
+            Console.WriteLine("Output is: {0}", row.Output);
+            return row;
         }
 
         public void SetRow(string listID, string input1, string input2, string output, int type, bool toThrow)
