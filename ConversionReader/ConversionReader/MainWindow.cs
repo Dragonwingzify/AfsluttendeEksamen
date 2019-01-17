@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ConversionReader.Form2;
@@ -74,12 +75,10 @@ namespace ConversionReader
             if (tableForm == SwitchForms.showTable)
             {
                 switchForm = false;
-                var form3 = new Form3(this);
-                form3.Show();
                 Table.Enabled = false;
+                backgroundWorker1.RunWorkerAsync();
             }
-
-
+            
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -97,5 +96,52 @@ namespace ConversionReader
 
         }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var form3 = new Form3(this);
+            e.Result = form3;
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+            pbTableProgress.Value = e.ProgressPercentage;
+            lblTableProgress.Text = e.ProgressPercentage.ToString() + "%";
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Form3 resultForm3 = e.Result as Form3;
+
+            ///Conditions: If completed object returns with:
+            ///Cancellation,
+            ///Error
+            ///or Completion.
+            if (e.Cancelled) //If Background Worker thread was canceled...
+            {
+                //Display text that tells the user that the process has been canceled.
+                lblTableProgress.Text = "Loading table has been canceled.";
+            }
+        
+            else if(e.Error != null) //If there is an error...
+            {
+                lblTableProgress.Text = e.Error.Message; //Display error message.
+            }
+
+            else //if Progress has completed...
+            {
+                resultForm3.Show(); //Show form 3.
+            }
+        }
+
+        private void pbTableProgress_Click(object sender, EventArgs e)
+{
+
+}
+
+private void lblTableProgress_Click(object sender, EventArgs e)
+{
+
+}
     }
 }
