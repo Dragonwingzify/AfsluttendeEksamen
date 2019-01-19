@@ -76,7 +76,9 @@ namespace ConversionReader
             {
                 switchForm = false;
                 Table.Enabled = false;
-                backgroundWorker1.RunWorkerAsync();
+                var form3 = new Form3(this);
+                form3.Show();
+                //backgroundWorker1.RunWorkerAsync();
             }
             
         }
@@ -130,7 +132,7 @@ namespace ConversionReader
 
             else //if Progress has completed...
             {
-                resultForm3.Show(); //Show form 3.
+                 //Show form 3.
             }
         }
 
