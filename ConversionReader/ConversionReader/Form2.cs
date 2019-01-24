@@ -37,7 +37,6 @@ namespace ConversionReader
             InitializeComponent();
             panel2.Visible = false;
             pnlSubmit.Visible = true;
-            btnGoTable.Enabled = true;
             ToThrow = false;
 
             //Set location values
@@ -45,6 +44,7 @@ namespace ConversionReader
             y = pnlLinecode.Location.Y;
 
             Point Location = new Point(190, 288);
+            LoadTable();
         }
 
         private void btnRtrnMain_Click(object sender, EventArgs e)
@@ -60,15 +60,6 @@ namespace ConversionReader
             form.ShowDialog();
         }
 
-        private void btnGoTable_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            var form3 = new Form3(this);
-            form3.Show();
-            btnGoTable.Enabled = false;
-            switchForm = true;
-
-        }
 
         private void pnlWriteCnvrt_Paint(object sender, PaintEventArgs e)
         {
@@ -279,11 +270,6 @@ namespace ConversionReader
         }
         #endregion
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void pnlSubmit_Enter(object sender, EventArgs e)
         {
 
@@ -354,6 +340,7 @@ namespace ConversionReader
                 type = 2;
 
             handler.SetRow(ListId, Input1, Input2, Output, type, ToThrow);
+            LoadTable();
         }
 
         private void boxSbmIn1_TextChanged(object sender, EventArgs e)
@@ -374,6 +361,7 @@ namespace ConversionReader
         private void btnDelete_Click(object sender, EventArgs e)
         {
             handler.DeleteRow(Id, ToThrow);
+            LoadTable();
         }
 
         private void btnDelRow_Click(object sender, EventArgs e)
@@ -413,6 +401,8 @@ namespace ConversionReader
                 MessageBox.Show("Please Insert an ID into the input field.");
             else
                 handler.UpdateRow(boxGetFromId.Text, boxEditLId.Text, boxEditInput1.Text, boxEditInput2.Text, boxEditOutput.Text, type, ToThrow);
+
+            LoadTable();
         }
 
         private void boxEditLId_TextChanged(object sender, EventArgs e)
@@ -443,9 +433,33 @@ namespace ConversionReader
             pnlEdit.Location = pnlSubmit.Location;
             pnlEdit.Visible = true;
         }
-        public void EnableTableAgain()
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnGoTable.Enabled = true;
+
+        }
+        public void LoadTable()
+        {
+            string constring = "Data Source=lc-server.database.windows.net;Initial Catalog=LC-Engine;Persist Security Info=True;User ID=jdaProject;Password=Gruppe12";
+            SqlConnection conDataBase = new SqlConnection(constring);
+            SqlCommand cmdDataBase = new SqlCommand(" SELECT * FROM convert_platform ; ", conDataBase);
+
+            try
+            {
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmdDataBase;
+                DataTable dbdataset = new DataTable();
+                sda.Fill(dbdataset);
+                BindingSource bSource = new BindingSource();
+
+                bSource.DataSource = dbdataset;
+                dataGridView1.DataSource = bSource;
+                sda.Update(dbdataset);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -52,7 +52,6 @@ namespace ConversionReader
             {
                 switchForm = false;
                 this.Hide();
-                frm2.EnableTableAgain();
 
                 this.Close();
             }

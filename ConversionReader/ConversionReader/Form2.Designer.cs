@@ -34,7 +34,6 @@
             this.btnDelRow = new System.Windows.Forms.Button();
             this.btnAddRow = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.btnGoTable = new System.Windows.Forms.Button();
             this.boxSlctType = new System.Windows.Forms.ComboBox();
             this.txtListId = new System.Windows.Forms.TextBox();
             this.pnlSubmit = new System.Windows.Forms.GroupBox();
@@ -83,8 +82,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblSelectionHelp = new System.Windows.Forms.Label();
             this.gBoxMain = new System.Windows.Forms.GroupBox();
-            this.lblResult = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.OutputBox = new System.Windows.Forms.ListBox();
+            this.lblResult = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pnlSubmit.SuspendLayout();
             this.pnlEdit.SuspendLayout();
@@ -94,13 +94,14 @@
             this.pnlPortPier.SuspendLayout();
             this.pnlLinecode.SuspendLayout();
             this.gBoxMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRtrnMain
             // 
-            this.btnRtrnMain.Location = new System.Drawing.Point(13, 415);
+            this.btnRtrnMain.Location = new System.Drawing.Point(33, 767);
             this.btnRtrnMain.Name = "btnRtrnMain";
-            this.btnRtrnMain.Size = new System.Drawing.Size(75, 23);
+            this.btnRtrnMain.Size = new System.Drawing.Size(130, 32);
             this.btnRtrnMain.TabIndex = 0;
             this.btnRtrnMain.Text = "Return";
             this.btnRtrnMain.UseVisualStyleBackColor = true;
@@ -111,18 +112,18 @@
             this.groupBox1.Controls.Add(this.btnEditRow);
             this.groupBox1.Controls.Add(this.btnDelRow);
             this.groupBox1.Controls.Add(this.btnAddRow);
-            this.groupBox1.Location = new System.Drawing.Point(26, 23);
+            this.groupBox1.Location = new System.Drawing.Point(26, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(158, 369);
+            this.groupBox1.Size = new System.Drawing.Size(158, 253);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigation";
             // 
             // btnEditRow
             // 
-            this.btnEditRow.Location = new System.Drawing.Point(7, 121);
+            this.btnEditRow.Location = new System.Drawing.Point(6, 183);
             this.btnEditRow.Name = "btnEditRow";
-            this.btnEditRow.Size = new System.Drawing.Size(144, 41);
+            this.btnEditRow.Size = new System.Drawing.Size(144, 33);
             this.btnEditRow.TabIndex = 3;
             this.btnEditRow.Text = "Edit Row";
             this.btnEditRow.UseVisualStyleBackColor = true;
@@ -130,9 +131,9 @@
             // 
             // btnDelRow
             // 
-            this.btnDelRow.Location = new System.Drawing.Point(7, 74);
+            this.btnDelRow.Location = new System.Drawing.Point(8, 108);
             this.btnDelRow.Name = "btnDelRow";
-            this.btnDelRow.Size = new System.Drawing.Size(144, 41);
+            this.btnDelRow.Size = new System.Drawing.Size(144, 33);
             this.btnDelRow.TabIndex = 2;
             this.btnDelRow.Text = "Delete Row";
             this.btnDelRow.UseVisualStyleBackColor = true;
@@ -142,7 +143,7 @@
             // 
             this.btnAddRow.Location = new System.Drawing.Point(7, 27);
             this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(144, 41);
+            this.btnAddRow.Size = new System.Drawing.Size(144, 33);
             this.btnAddRow.TabIndex = 1;
             this.btnAddRow.Text = "Add Row";
             this.btnAddRow.UseVisualStyleBackColor = true;
@@ -150,23 +151,13 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(375, 47);
+            this.btnSubmit.Location = new System.Drawing.Point(375, 106);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(145, 48);
+            this.btnSubmit.Size = new System.Drawing.Size(119, 31);
             this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Get Data";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // btnGoTable
-            // 
-            this.btnGoTable.Location = new System.Drawing.Point(676, 401);
-            this.btnGoTable.Name = "btnGoTable";
-            this.btnGoTable.Size = new System.Drawing.Size(112, 37);
-            this.btnGoTable.TabIndex = 4;
-            this.btnGoTable.Text = "Show table";
-            this.btnGoTable.UseVisualStyleBackColor = true;
-            this.btnGoTable.Click += new System.EventHandler(this.btnGoTable_Click);
             // 
             // boxSlctType
             // 
@@ -200,9 +191,9 @@
             this.pnlSubmit.Controls.Add(this.boxSbmIn1);
             this.pnlSubmit.Controls.Add(this.btnSbmSubmit);
             this.pnlSubmit.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pnlSubmit.Location = new System.Drawing.Point(190, 285);
+            this.pnlSubmit.Location = new System.Drawing.Point(190, 271);
             this.pnlSubmit.Name = "pnlSubmit";
-            this.pnlSubmit.Size = new System.Drawing.Size(535, 110);
+            this.pnlSubmit.Size = new System.Drawing.Size(661, 96);
             this.pnlSubmit.TabIndex = 14;
             this.pnlSubmit.TabStop = false;
             this.pnlSubmit.Text = "Add Row";
@@ -210,7 +201,7 @@
             // 
             // boxSbmLId
             // 
-            this.boxSbmLId.Location = new System.Drawing.Point(6, 43);
+            this.boxSbmLId.Location = new System.Drawing.Point(61, 63);
             this.boxSbmLId.Name = "boxSbmLId";
             this.boxSbmLId.Size = new System.Drawing.Size(91, 22);
             this.boxSbmLId.TabIndex = 10;
@@ -219,7 +210,7 @@
             // txtSbmOut
             // 
             this.txtSbmOut.AutoSize = true;
-            this.txtSbmOut.Location = new System.Drawing.Point(297, 23);
+            this.txtSbmOut.Location = new System.Drawing.Point(398, 43);
             this.txtSbmOut.Name = "txtSbmOut";
             this.txtSbmOut.Size = new System.Drawing.Size(51, 17);
             this.txtSbmOut.TabIndex = 9;
@@ -228,7 +219,7 @@
             // txtSbmIn2
             // 
             this.txtSbmIn2.AutoSize = true;
-            this.txtSbmIn2.Location = new System.Drawing.Point(200, 22);
+            this.txtSbmIn2.Location = new System.Drawing.Point(285, 42);
             this.txtSbmIn2.Name = "txtSbmIn2";
             this.txtSbmIn2.Size = new System.Drawing.Size(47, 17);
             this.txtSbmIn2.TabIndex = 8;
@@ -237,7 +228,7 @@
             // txtSbmIn1
             // 
             this.txtSbmIn1.AutoSize = true;
-            this.txtSbmIn1.Location = new System.Drawing.Point(100, 23);
+            this.txtSbmIn1.Location = new System.Drawing.Point(174, 43);
             this.txtSbmIn1.Name = "txtSbmIn1";
             this.txtSbmIn1.Size = new System.Drawing.Size(47, 17);
             this.txtSbmIn1.TabIndex = 7;
@@ -246,7 +237,7 @@
             // txtSbmLId
             // 
             this.txtSbmLId.AutoSize = true;
-            this.txtSbmLId.Location = new System.Drawing.Point(6, 23);
+            this.txtSbmLId.Location = new System.Drawing.Point(61, 43);
             this.txtSbmLId.Name = "txtSbmLId";
             this.txtSbmLId.Size = new System.Drawing.Size(45, 17);
             this.txtSbmLId.TabIndex = 6;
@@ -254,15 +245,15 @@
             // 
             // boxSbmOut
             // 
-            this.boxSbmOut.Location = new System.Drawing.Point(300, 43);
+            this.boxSbmOut.Location = new System.Drawing.Point(401, 63);
             this.boxSbmOut.Name = "boxSbmOut";
-            this.boxSbmOut.Size = new System.Drawing.Size(77, 22);
+            this.boxSbmOut.Size = new System.Drawing.Size(60, 22);
             this.boxSbmOut.TabIndex = 4;
             this.boxSbmOut.TextChanged += new System.EventHandler(this.boxSbmOut_TextChanged);
             // 
             // boxSbmIn2
             // 
-            this.boxSbmIn2.Location = new System.Drawing.Point(200, 43);
+            this.boxSbmIn2.Location = new System.Drawing.Point(285, 63);
             this.boxSbmIn2.Name = "boxSbmIn2";
             this.boxSbmIn2.Size = new System.Drawing.Size(91, 22);
             this.boxSbmIn2.TabIndex = 3;
@@ -270,7 +261,7 @@
             // 
             // boxSbmIn1
             // 
-            this.boxSbmIn1.Location = new System.Drawing.Point(103, 43);
+            this.boxSbmIn1.Location = new System.Drawing.Point(177, 63);
             this.boxSbmIn1.Name = "boxSbmIn1";
             this.boxSbmIn1.Size = new System.Drawing.Size(91, 22);
             this.boxSbmIn1.TabIndex = 2;
@@ -278,9 +269,9 @@
             // 
             // btnSbmSubmit
             // 
-            this.btnSbmSubmit.Location = new System.Drawing.Point(403, 42);
+            this.btnSbmSubmit.Location = new System.Drawing.Point(494, 57);
             this.btnSbmSubmit.Name = "btnSbmSubmit";
-            this.btnSbmSubmit.Size = new System.Drawing.Size(117, 52);
+            this.btnSbmSubmit.Size = new System.Drawing.Size(117, 30);
             this.btnSbmSubmit.TabIndex = 0;
             this.btnSbmSubmit.Text = "Submit";
             this.btnSbmSubmit.UseVisualStyleBackColor = true;
@@ -299,7 +290,7 @@
             this.pnlEdit.Controls.Add(this.lblSelectId);
             this.pnlEdit.Controls.Add(this.boxGetFromId);
             this.pnlEdit.Controls.Add(this.btnEdit);
-            this.pnlEdit.Location = new System.Drawing.Point(754, 190);
+            this.pnlEdit.Location = new System.Drawing.Point(754, 179);
             this.pnlEdit.Name = "pnlEdit";
             this.pnlEdit.Size = new System.Drawing.Size(535, 110);
             this.pnlEdit.TabIndex = 16;
@@ -407,7 +398,7 @@
             this.pnlDelete.Controls.Add(this.lblSelctId);
             this.pnlDelete.Controls.Add(this.boxSlctId);
             this.pnlDelete.Controls.Add(this.btnDelete);
-            this.pnlDelete.Location = new System.Drawing.Point(754, 41);
+            this.pnlDelete.Location = new System.Drawing.Point(754, 30);
             this.pnlDelete.Name = "pnlDelete";
             this.pnlDelete.Size = new System.Drawing.Size(535, 110);
             this.pnlDelete.TabIndex = 15;
@@ -607,7 +598,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(372, 27);
+            this.label1.Location = new System.Drawing.Point(372, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 17);
             this.label1.TabIndex = 13;
@@ -631,24 +622,24 @@
             this.gBoxMain.Controls.Add(this.lblResult);
             this.gBoxMain.Controls.Add(this.label1);
             this.gBoxMain.Controls.Add(this.OutputBox);
-            this.gBoxMain.Location = new System.Drawing.Point(190, 23);
+            this.gBoxMain.Location = new System.Drawing.Point(190, 12);
             this.gBoxMain.Name = "gBoxMain";
-            this.gBoxMain.Size = new System.Drawing.Size(535, 253);
+            this.gBoxMain.Size = new System.Drawing.Size(677, 253);
             this.gBoxMain.TabIndex = 15;
             this.gBoxMain.TabStop = false;
             this.gBoxMain.Text = "Conversion selection";
             this.gBoxMain.Enter += new System.EventHandler(this.gBoxMain_Enter);
             // 
-            // lblResult
+            // dataGridView1
             // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(372, 107);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(52, 17);
-            this.lblResult.TabIndex = 3;
-            this.lblResult.Text = "Result:";
-            this.lblResult.Visible = false;
-            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 382);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(870, 364);
+            this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // OutputBox
             // 
@@ -661,16 +652,27 @@
             this.OutputBox.Visible = false;
             this.OutputBox.SelectedIndexChanged += new System.EventHandler(this.OutputBox_SelectedIndexChanged);
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(372, 107);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(52, 17);
+            this.lblResult.TabIndex = 3;
+            this.lblResult.Text = "Result:";
+            this.lblResult.Visible = false;
+            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(875, 811);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pnlEdit);
             this.Controls.Add(this.pnlDelete);
             this.Controls.Add(this.gBoxMain);
             this.Controls.Add(this.pnlSubmit);
-            this.Controls.Add(this.btnGoTable);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRtrnMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -693,6 +695,7 @@
             this.pnlLinecode.PerformLayout();
             this.gBoxMain.ResumeLayout(false);
             this.gBoxMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -751,10 +754,10 @@
         private System.Windows.Forms.TextBox boxEditInput2;
         private System.Windows.Forms.TextBox boxEditInput1;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnGoTable;
-        private System.Windows.Forms.Label lblResult;
-        private System.Windows.Forms.ListBox OutputBox;
         private System.Windows.Forms.Label lblSelectId;
         private System.Windows.Forms.TextBox boxGetFromId;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.ListBox OutputBox;
     }
 }

@@ -37,6 +37,10 @@ namespace ConversionReader
         {
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+            Image test = Properties.Resources.case_5560e361_d33a_4916_b06f_3ee89098ebd1;
+            PictureBox b = new PictureBox();
+            b.BackColor = Color.Transparent;
+            b.BringToFront();
         }
 
         /* When we press the convert button, the foreach loop is closing everything except MainWindow, but at the same time
@@ -96,6 +100,5 @@ namespace ConversionReader
         {
 
         }
-
     }
 }
